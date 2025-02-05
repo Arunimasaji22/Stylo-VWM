@@ -1,0 +1,28 @@
+{% extends 'Co-ordinator/homeindex.html' %}
+{% block body %}
+<body>
+<form id="form1" name="form1" method="post" action="/">
+  <table width="200" border="1" class="table table-success table-striped">
+    <tr>
+      <td><a href="verifymanufacture">Verify Manufacture</a></td>
+    </tr>
+    <tr>
+      <td><a href="viewcompailnts">View Complients & Send Replay</a></td>
+    </tr>
+    <tr>
+      <td><a href="viewrateing">Rating</a></td>
+    </tr>
+    <tr>
+      <td><a href="block">Block &  Unblock Manufacture</a></td>
+    </tr>
+    <tr>
+      <td><label>
+        <div align="center">
+          <input type="submit" name="Submit" value="Logout" />
+          </div>
+      </label></td>
+    </tr>
+  </table>
+</form>
+</body>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'Designers/designer_index.html' %}
+{% block body %}
+<form id="form1" name="form1" method="post" action="/searchcustomisedesign#about">
+  <table border="1" class="table table-success table-striped">
+    <tr>
+      <th colspan="4" align="center">Date
+        <label>
+        <input type="date" name="textfield" required value="{{ a }}" class="bg-transparent"/>
+        <input type="submit" name="Submit" value="Search" class="btn btn-outline-success"/>
+      </label></th>
+    </tr>
+    <tr>
+      <th>User</th>
+      <th>Design details </th>
+      <th>Date</th>
+      <th>&nbsp;</th>
+    </tr>
+      {% for i in val %}
+    <tr>
+      <td>&nbsp;{{ i.USER.Name }}</td>
+      <td>&nbsp;{{ i.design_details }}</td>
+      <td>{{ i.date }}</td>
+      <td>
+      {% if i.status == 'pending' %}
+          <p><a href="acceptdesign/{{ i.id }}" class="btn btn-outline-primary">Accept</a></p>
+          <p><a href="rejectdesign/{{ i.id }}"class="btn btn-outline-danger">Reject</a></p>
+      {% else %}
+          {{ i.status }}
+      {% endif %}
+      </td>
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+{% endblock %}

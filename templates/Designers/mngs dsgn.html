@@ -1,0 +1,39 @@
+{% extends 'Designers/designer_index.html' %}
+{% block body %}
+<form id="form1" name="form1" method="post" action="/searchdesign#about">
+  <table border="1" class="table table-success table-striped">
+    <tr>
+      <th colspan="4" align="center">Type
+        <label>
+        <input type="text" name="textfield" required class="bg-transparent" value="{{ a }}"/>
+        <input type="submit" name="Submit2" value="Search" class="btn btn-outline-success"/>
+      </label></th>
+    </tr>
+    <tr>
+      <th>Type</th>
+      <th>Design </th>
+      <th>Description </th>
+      <th>&nbsp;</th>
+    </tr>
+       {% for i in val %}
+    <tr>
+      <td>&nbsp;{{ i.type }}</td>
+      <td><img src="{{ i.design.url }}" alt="" height="80" width="120"/></td>
+      <td>&nbsp;{{ i.discription }}</td>
+      <td><p><a href="editdesign/{{ i.id }}#about"  class="btn btn-outline-primary">edit</a></p>
+      <p><a href="deletedesign/{{ i.id }}"  class="btn btn-outline-danger">delete</a></p>
+      <p><a href="more_designs/{{ i.id }}#about"  class="btn btn-outline-secondary">View more designs</a></p>
+      </td>
+    </tr>
+       {% endfor %}
+
+
+    <tr>
+      <td colspan="4" align="center"><label>
+        <div><a href="adddesign#about" class="btn btn-success">ADD</a></div>
+      </label></td>
+    </tr>
+  </table>
+  <div align="center"></div>
+</form>
+{% endblock %}

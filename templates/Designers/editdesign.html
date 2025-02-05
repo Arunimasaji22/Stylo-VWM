@@ -1,0 +1,33 @@
+{% extends 'Designers/designer_index.html' %}
+{% block body %}
+<form action="/edit_design_post" method="post" enctype="multipart/form-data" name="form1" id="form1">
+  <table width="326" height="174" border="1" class="table table-success table-striped">
+    <tr>
+      <td>Type</td>
+      <td><label>
+        <input type="text" name="textfield"  required value="{{ val.type }}" class="bg-transparent"/>
+      </label></td>
+    </tr>
+    <tr>
+      <td>Design</td>
+      <td><label>
+        <input type="file" name="file" required  class="bg-transparent"/>
+          <img src="{{ val.design.url }}" alt=""height="80" width="120"/>
+      </label></td>
+    </tr>
+    <tr>
+      <td>Discription</td>
+      <td><label>
+        <input type="text" name="textfield2" required value="{{ val.discription }}" class="bg-transparent"/>
+      </label></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center"><label>
+        <div>
+          <input type="submit" name="Submit" value="UPDATE" class="btn btn-success"/>
+          </div>
+      </label></td>
+    </tr>
+  </table>
+</form>
+{% endblock %}

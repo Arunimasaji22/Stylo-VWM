@@ -1,0 +1,78 @@
+{% load static %}
+<html>
+<head>
+<title>Manufacture registration</title>
+<!-- Meta tag Keywords -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Course Registration Form Responsive Widget,Login form widgets, Sign up Web forms , Login signup Responsive web form,Flat Pricing table,Flat Drop downs,Registration Forms,News letter Forms,Elements" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- Meta tag Keywords -->
+<link href="../static/reg/css/style.css" rel="stylesheet" type="text/css" media="all" />
+<!-- js -->
+<!-- //js -->
+<!-- web-fonts -->
+<link href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+<!-- //web-fonts --> 
+</head>
+<body>
+	<!-- banner --> 
+<div class="video"> 
+	<div class="center-container">
+	    <div class="w3ls-agileinfo">
+			<h1>Registration Form </h1>
+		</div>
+		 <div class="bg-agile">
+{#			<h2>Training Course </h2>#}
+			<div class="login-form">	
+				<form action="/registration" method="post" enctype="multipart/form-data">
+					<input type="text"  name="textfield" placeholder="Name"  required pattern="[A-Z a-z .]{2,25}" />
+
+                    <td><p style="color: white">Gender</p></td>
+                    <td><label style="color: whitesmoke">M
+        <input name="radiobutton" type="radio" value="male" checked/>
+        </label>
+          <label style="color: whitesmoke">F
+            <input name="radiobutton" type="radio" value="female" />
+          </label>
+					<input type="text"  name="textfield2" placeholder="Place" required pattern="[A-Z a-z . 0-9]{2,25}"/>
+					<input type="text"  name="textfield3" placeholder="Post" required pattern="[A-Z a-z . 0-9]{2,25}" />
+					<input type="text"  name="textfield4" placeholder="Pin" required pattern="[0-9]{6}" />
+					<input type="text"  name="textfield5" placeholder="Phone" required pattern="[6789][0-9 +]{9}"/>
+					<label style="color: whitesmoke"> License <input type="file"  name="file" placeholder="License Proof" required="" /></label>
+					<input type="email"  name="textfield7" placeholder="Email" required="" />
+					<label style="color: whitesmoke">Photo<input type="file"  name="file2" placeholder="Photo" required="" /></label>
+					<input type="text"  name="textfield6" placeholder="Username" required="" />
+					<input type="text"  name="textfield8" placeholder="Password" required="" />
+
+{#					<div class="left-w3-agile">#}
+{#						<select class="form-control">#}
+{#							<option>Choose your country</option>#}
+{#							<option>Argentina</option>#}
+{#							<option>Georgia</option>#}
+{#							<option> Dominica</option>#}
+{#							<option>Lithuania</option>#}
+{#							<option> Monaco</option>#}
+{#						</select>#}
+{#						<input type="text"  name="Region" placeholder="State/region" required="" />#}
+{#					</div>#}
+{#					<div class="right-agileits">#}
+{#						<input type="text"  name="City" placeholder="City" required="" />#}
+{#						<input type="text"  name="Zip/postal code" placeholder="Zip/postal code" required="" />#}
+{#					</div>#}
+{#					<input type="text"  name="Number" placeholder="Phone Number" required="" />#}
+					<input type="submit" value="Submit">
+				</form>	
+			</div>	
+		</div>
+	<!-- //banner --> 
+	 <!--copyright-->
+		<div class="copy w3ls">
+{#		    <p>&copy; 2018 Course Registration Form . All Rights Reserved  | Design by <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>#}
+	    </div>
+	<!--//copyright-->
+	</div>	
+</div>	
+</body>
+</html>

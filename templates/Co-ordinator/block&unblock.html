@@ -1,0 +1,44 @@
+{% extends 'Co-ordinator/homeindex.html' %}
+{% block body %}
+
+<body>
+<form id="form1" name="form1" method="post" action="block1#about">
+  <table width="504" height="152" border="1" class="table table-success table-striped">
+    <tr>
+      <th colspan="8"><label> Name    :
+        <input type="text" name="textfield" value="{{ a }}" required class="bg-transparent"/>
+        <input type="submit" name="Submit" value="Search" class="btn btn-outline-success" />
+      </label></th>
+    </tr>
+    <tr>
+      <th>Name</th>
+      <th>Gender</th>
+      <th>Address</th>
+      <th>Licenseproof</th>
+      <th>Photo</th>
+      <th>Phone</th>
+      <th>Email</th>
+      <th>&nbsp;</th>
+    </tr>
+      {% for i in val %}
+          {% if i.LOGIN.type != 'pending' and i.LOGIN.type != 'Rejected'%}
+    <tr>
+      <td>{{ i.Name}}</td>
+      <td>&nbsp;{{ i.Gender }}</td>
+      <td>{{ i.Place }}<br>
+      {{ i.Post }}<br>
+      {{ i.Pin }}
+      </td>
+      <td>&nbsp;{{ i.License }}</td>
+      <td><img src="{{ i.Photo.url }}" width="100" height="100" ></td>
+      <td>{{ i.Phone }}</td>
+      <td>{{ i.Email }}</td>
+      <td>{% if i.LOGIN.type == 'designer' %}<a href="block_designer/{{ i.LOGIN.id }}" class="btn btn-outline-danger">Block</a><br>
+          {% else %}<a href="unblock_designer/{{ i.LOGIN.id }}" class="btn btn-outline-info">Unblock</a>{% endif %}</td>
+    </tr>
+          {% endif %}
+       {% endfor %}
+  </table>
+</form>
+</body>
+{% endblock %}

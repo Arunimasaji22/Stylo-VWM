@@ -1,0 +1,46 @@
+{% extends 'Designers/designer_index.html' %}
+{% block body %}
+
+<form action="add_design_post" method="post" enctype="multipart/form-data" name="form1" id="form1">
+  <table width="326" height="174" border="1" class="table table-success table-striped">
+    <tr>
+      <td>Type</td>
+      <td><label>
+        <input type="text" name="textfield" required/>
+      </label></td>
+    </tr>
+    <tr>
+      <td>Design</td>
+      <td><label>
+        <input type="file" name="file" required/>
+      </label></td>
+    </tr>
+    <tr>
+      <td>Season</td>
+      <td>
+        <select name="season" required>
+          <option value="Spring">Spring Season (Vasant) - February to March</option>
+          <option value="Summer">Summer Season (Grishma) - March to May</option>
+          <option value="Monsoon">Monsoon Season (Varsha) - June to September</option>
+          <option value="Autumn">Autumn Season (Sharad) - October to November</option>
+          <option value="Pre-Winter">Pre-Winter Season (Hemant) - December to January</option>
+          <option value="Winter">Winter Season (Shishir) - January to February</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td>Discription</td>
+      <td><label>
+        <input type="text" name="textfield2" required />
+      </label></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center"><label>
+        <div>
+          <input type="submit" name="Submit" value="ADD" class="btn btn-success"/>
+          </div>
+      </label></td>
+    </tr>
+  </table>
+</form>
+{% endblock %}

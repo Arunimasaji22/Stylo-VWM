@@ -1,0 +1,22 @@
+{% extends 'Co-ordinator/homeindex.html' %}
+{% block body %}
+<body>
+<form id="form1" name="form1" method="post" action="/add_reply">
+  <table width="200" border="1" class="table table-success table-striped">
+    <tr>
+      <th>Replay
+        <label>
+        <input type="text" name="textfield" required />
+      </label></th>
+    </tr>
+    <tr>
+      <td><label>
+        <div align="center">
+          <input type="submit" name="Submit" value="Send" />
+          </div>
+      </label></td>
+    </tr>
+  </table>
+</form>
+</body>
+{% endblock %}

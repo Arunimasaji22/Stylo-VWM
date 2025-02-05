@@ -1,0 +1,44 @@
+{% extends 'Co-ordinator/homeindex.html' %}
+{% block body %}
+<body>
+<form id="form1" name="form1" method="post" action="search_designer#about">
+  <table border="1" class="table table-success table-striped">
+    <tr>
+      <th colspan="7"><label>Name :
+        <input type="text" name="textfield" required value="{{ a }}" class="bg-transparent"/>
+      </label>
+      <label>
+        <input type="submit" name="Submit" value="Search" class="btn btn-outline-success"/>
+      </label></th>
+    </tr>
+    <tr>
+      <th>Name</th>
+      <th>Gender</th>
+      <th>Address</th>
+      <th>License Proof</th>
+      <th>Photo</th>
+      <th>Email</th>
+      <th>&nbsp;Status</th>
+    </tr>
+      {% for i in val %}
+    <tr>
+      <td ><label></label>{{ i.Name }}</td>
+      <td >&nbsp;{{ i.Gender }}</td>
+      <td>{{ i.Place }}<br>
+      {{ i.Post }}<br>
+      {{ i.Pin }}<br>
+      {{ i.Phone }}</td>
+      <td >{{ i.License}}<a href="{{ i.License.url }}" download>   Download</a></td>
+      <td><img src="{{ i.Photo.url}}" width="100" height="100"> </td>
+      <td>&nbsp;{{ i.Email }}</td>
+      <td>{% if i.LOGIN.type == 'pending' %}<label><a href="accept_designer/{{ i.LOGIN.id }}">Accept</a></label><br>
+      <label><a href="reject_designer/{{ i.LOGIN.id }}">Reject</a></label>{% elif i.LOGIN.type == 'designer' %}Accepted{% else %} Rejected {% endif %}</td>
+    </tr>
+      {% endfor %}
+    <tr>
+    </tr>
+  </table>
+</form>
+</body>
+{% endblock %}
+

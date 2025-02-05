@@ -1,0 +1,26 @@
+{% extends 'User/homeindex.html' %}
+
+{% block body %}
+<div class="container mt-4">
+    <h2 class="text-center">Dress Recommendations for {{ season }} Season</h2>
+    
+    {% if dresses %}
+    <div class="row mt-4">
+        
+        {% for dress in dresses %}
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="{{ dress.design.url }}" class="card-img-top" alt="{{ dress.type }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ dress.type }}</h5>
+                    <p class="card-text">{{ dress.discription }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p class="text-center mt-4">No recommendations available for this season.</p>
+    {% endif %}
+</div>
+{% endblock %}
