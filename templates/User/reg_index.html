@@ -1,61 +1,452 @@
 {% load static %}
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>User registration</title>
-<!-- Meta tag Keywords -->
+    <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Course Registration Form Responsive Widget,Login form widgets, Sign up Web forms , Login signup Responsive web form,Flat Pricing table,Flat Drop downs,Registration Forms,News letter Forms,Elements" />
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
-function hideURLbar(){ window.scrollTo(0,1); } </script>
-<!-- Meta tag Keywords -->
-<link href="../static/reg/css/style.css" rel="stylesheet" type="text/css" media="all" />
-<!-- js -->
-<!-- //js -->
-<!-- web-fonts -->
-<link href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
-<!-- //web-fonts --> 
+    <title>User Registration - VirtualWardrobe</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #a5b4fc;
+            --secondary-color: #f0abfc;
+            --accent-color: #c4b5fd;
+            --text-color: #374151;
+            --background-start: #fae8ff;
+            --background-mid: #ddd6fe;
+            --background-end: #e0e7ff;
+            --input-bg: rgba(255, 255, 255, 0.9);
+            --shadow-color: rgba(165, 180, 252, 0.2);
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--background-start) 0%, var(--background-mid) 50%, var(--background-end) 100%);
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(165, 180, 252, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(240, 171, 252, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .registration-container {
+            width: 100%;
+            max-width: 800px;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 
+                0 20px 40px var(--shadow-color),
+                inset 0 -3px 0 rgba(165, 180, 252, 0.2);
+            animation: containerFloat 6s ease-in-out infinite;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        @keyframes containerFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .form-header h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            animation: titleFloat 6s ease-in-out infinite;
+        }
+
+        .form-header p {
+            color: var(--text-color);
+            opacity: 0.8;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .form-control {
+            background: var(--input-bg);
+            border: 2px solid transparent;
+            border-radius: 12px;
+            padding: 12px 20px;
+            font-size: 1rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            color: var(--text-color);
+            box-shadow: 0 2px 10px var(--shadow-color);
+            backdrop-filter: blur(5px);
+        }
+
+        .form-control:focus {
+            border-color: var(--accent-color);
+            box-shadow: 
+                0 5px 15px var(--shadow-color),
+                0 0 0 4px rgba(196, 181, 253, 0.1);
+            transform: translateY(-2px) scale(1.01);
+        }
+
+        .form-label {
+            color: var(--text-color);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .gender-group {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            background: var(--input-bg);
+            padding: 1rem;
+            border-radius: 12px;
+            border: 2px solid transparent;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(5px);
+        }
+
+        .gender-group:hover {
+            border-color: var(--secondary-color);
+        }
+
+        .gender-option {
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gender-option:hover {
+            color: var(--primary-color);
+            transform: scale(1.05);
+        }
+
+        .gender-option::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            opacity: 0;
+            transition: all 0.4s ease;
+            z-index: -1;
+            top: 0;
+            left: 0;
+            border-radius: 8px;
+        }
+
+        .gender-option:hover::after {
+            opacity: 0.1;
+        }
+
+        .file-upload {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+            background: var(--input-bg);
+            border: 2px dashed var(--primary-color);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+        }
+
+        .file-upload:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px var(--shadow-color);
+        }
+
+        .file-upload i {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .file-upload::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, 
+                transparent, 
+                rgba(165, 180, 252, 0.1),
+                transparent
+            );
+            transform: rotate(45deg);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
+        }
+
+        .submit-btn {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            width: 100%;
+            margin-top: 2rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, 
+                transparent,
+                rgba(255, 255, 255, 0.2),
+                transparent
+            );
+            transform: translateX(-100%);
+            transition: all 0.6s ease;
+        }
+
+        .submit-btn:hover::before {
+            transform: translateX(100%);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 
+                0 8px 25px var(--shadow-color),
+                0 0 0 2px rgba(165, 180, 252, 0.2);
+        }
+
+        @keyframes fadeInUp {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes titleFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-5px) rotate(1deg); }
+        }
+
+        /* Enhanced mobile responsiveness */
+        @media (max-width: 768px) {
+            .registration-container {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+
+            .form-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .gender-group {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
-	<!-- banner --> 
-<div class="video"> 
-	<div class="center-container">
-	    <div class="w3ls-agileinfo">
-			<h1>Registration Form </h1>
+    <div class="registration-container">
+        <div class="form-header">
+            <h1>Join VirtualWardrobe</h1>
+            <p class="text-white opacity-75">Create your account to get started</p>
+        </div>
+
+        <form action="/user_register_post" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group" style="--i:1">
+                        <label class="form-label">Full Name</label>
+                        <input type="text" class="form-control" name="Name" required pattern="[A-Za-z .]{2,25}" placeholder="Enter your full name">
+                    </div>
 		</div>
-		 <div class="bg-agile">
-{#			<h2>Training Course </h2>#}
-			<div class="login-form">	
-				<form action="/user_register_post" method="post" enctype="multipart/form-data">
-					<input type="text"  name="Name" placeholder="Name"  required pattern="[A-Z a-z .]{2,25}" />
 
-                    <td><p style="color: white">Gender</p></td>
-                    <td><label style="color: whitesmoke">M
-        <input name="gender" type="radio" value="male" checked/>
+                <div class="col-md-6">
+                    <div class="form-group" style="--i:2">
+                        <label class="form-label">Gender</label>
+                        <div class="gender-group">
+                            <label class="gender-option">
+                                <input type="radio" name="gender" value="male" checked>
+                                <i class="bi bi-gender-male me-2"></i>Male
         </label>
-          <label style="color: whitesmoke">F
-            <input name="gender" type="radio" value="female" />
+                            <label class="gender-option">
+                                <input type="radio" name="gender" value="female">
+                                <i class="bi bi-gender-female me-2"></i>Female
           </label>
-					<input type="text"  name="Place" placeholder="Place" required pattern="[A-Z a-z . 0-9]{2,25}"/>
-					<input type="text"  name="Post" placeholder="Post" required pattern="[A-Z a-z . 0-9]{2,25}" />
-					<input type="text"  name="Pin" placeholder="Pin" required pattern="[0-9]{6}" />
-					<input type="text"  name="Phone" placeholder="Phone" required pattern="[6789][0-9 +]{9}"/>
-					<input type="email"  name="email" placeholder="Email" required="" />
-					<label style="color: whitesmoke">Photo<input type="file"  name="photo" placeholder="Photo" required="" /></label>
-					<input type="text"  name="Username" placeholder="Username" required="" />
-					<input type="text"  name="Password" placeholder="Password" required="" />
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-					<input type="submit" value="Submit">
-				</form>	
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group" style="--i:3">
+                        <label class="form-label">Place</label>
+                        <input type="text" class="form-control" name="Place" required pattern="[A-Za-z0-9 .]{2,25}" placeholder="Enter your place">
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group" style="--i:4">
+                        <label class="form-label">Post</label>
+                        <input type="text" class="form-control" name="Post" required pattern="[A-Za-z0-9 .]{2,25}" placeholder="Enter your post">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group" style="--i:5">
+                        <label class="form-label">PIN Code</label>
+                        <input type="text" class="form-control" name="Pin" required pattern="[0-9]{6}" placeholder="Enter 6-digit PIN code">
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group" style="--i:6">
+                        <label class="form-label">Phone Number</label>
+                        <input type="text" class="form-control" name="Phone" required pattern="[6789][0-9]{9}" placeholder="Enter your phone number">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group" style="--i:7">
+                        <label class="form-label">Email Address</label>
+                        <input type="email" class="form-control" name="email" required placeholder="Enter your email">
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group" style="--i:8">
+                        <label class="form-label">Profile Photo</label>
+                        <div class="file-upload">
+                            <i class="bi bi-cloud-upload"></i>
+                            <span>Click to upload photo</span>
+                            <input type="file" name="photo" required class="form-control" style="opacity: 0; position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group" style="--i:9">
+                        <label class="form-label">Username</label>
+                        <input type="text" class="form-control" name="Username" required placeholder="Choose a username">
 			</div>	
 		</div>
-	<!-- //banner --> 
-	 <!--copyright-->
-		<div class="copy w3ls">
-{#		    <p>&copy; 2018 Course Registration Form . All Rights Reserved  | Design by <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>#}
+
+                <div class="col-md-6">
+                    <div class="form-group" style="--i:10">
+                        <label class="form-label">Password</label>
+                        <input type="password" class="form-control" name="Password" required placeholder="Create a password">
 	    </div>
-	<!--//copyright-->
 	</div>	
 </div>	
+
+            <button type="submit" class="submit-btn">
+                <i class="bi bi-person-plus-fill me-2"></i>Create Account
+            </button>
+        </form>
+    </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Form validation
+        (function () {
+            'use strict'
+            var forms = document.querySelectorAll('.needs-validation')
+            Array.prototype.slice.call(forms).forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+                    form.classList.add('was-validated')
+                }, false)
+            })
+        })()
+
+        // File upload preview
+        const fileUpload = document.querySelector('input[type="file"]');
+        const fileLabel = document.querySelector('.file-upload span');
+        
+        fileUpload.addEventListener('change', function() {
+            if(this.files && this.files[0]) {
+                fileLabel.textContent = this.files[0].name;
+            }
+        });
+
+        // Enhanced animations for form groups
+        document.querySelectorAll('.form-group').forEach((group, index) => {
+            group.style.animationDelay = `${index * 0.1}s`;
+        });
+
+        // Add ripple effect to submit button
+        const submitBtn = document.querySelector('.submit-btn');
+        submitBtn.addEventListener('mouseenter', function(e) {
+            const ripple = document.createElement('div');
+            ripple.className = 'ripple';
+            this.appendChild(ripple);
+            
+            const rect = this.getBoundingClientRect();
+            ripple.style.left = `${e.clientX - rect.left}px`;
+            ripple.style.top = `${e.clientY - rect.top}px`;
+            
+            ripple.addEventListener('animationend', () => {
+                ripple.remove();
+            });
+        });
+    </script>
 </body>
 </html>

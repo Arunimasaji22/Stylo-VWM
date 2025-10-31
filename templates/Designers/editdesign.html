@@ -1,33 +1,82 @@
 {% extends 'Designers/designer_index.html' %}
 {% block body %}
-<form action="/edit_design_post" method="post" enctype="multipart/form-data" name="form1" id="form1">
-  <table width="326" height="174" border="1" class="table table-success table-striped">
-    <tr>
-      <td>Type</td>
-      <td><label>
-        <input type="text" name="textfield"  required value="{{ val.type }}" class="bg-transparent"/>
-      </label></td>
-    </tr>
-    <tr>
-      <td>Design</td>
-      <td><label>
-        <input type="file" name="file" required  class="bg-transparent"/>
-          <img src="{{ val.design.url }}" alt=""height="80" width="120"/>
-      </label></td>
-    </tr>
-    <tr>
-      <td>Discription</td>
-      <td><label>
-        <input type="text" name="textfield2" required value="{{ val.discription }}" class="bg-transparent"/>
-      </label></td>
-    </tr>
-    <tr>
-      <td colspan="2" align="center"><label>
-        <div>
-          <input type="submit" name="Submit" value="UPDATE" class="btn btn-success"/>
-          </div>
-      </label></td>
-    </tr>
-  </table>
-</form>
+
+<div class="container mt-4">
+  <div class="card shadow-lg p-4">
+    <h3 class="text-center text-primary">Edit Design</h3>
+    <form action="/edit_design_post" method="post" enctype="multipart/form-data" name="form1" id="form1">
+      <div class="mb-3">
+        <label class="form-label">Dress Name</label>
+        <input type="text" name="dress_name" value="{{ val.dressname }}" class="form-control" required />
+      </div>
+      
+      <div class="mb-3">
+        <label class="form-label">Dress Type</label>
+        <select name="textfield" class="form-select" required>
+          <option value="Casual Wear" {% if val.dresstype == 'Casual Wear' %} selected {% endif %}>Casual Wear</option>
+          <option value="Formal Wear" {% if val.dresstype == 'Formal Wear' %} selected {% endif %}>Formal Wear</option>
+          <option value="Party Wear" {% if val.dresstype == 'Party Wear' %} selected {% endif %}>Party Wear</option>
+          <option value="Ethnic Wear" {% if val.dresstype == 'Ethnic Wear' %} selected {% endif %}>Ethnic Wear</option>
+          <option value="Sports Wear" {% if val.dresstype == 'Sports Wear' %} selected {% endif %}>Sports Wear</option>
+          <option value="Winter Wear" {% if val.dresstype == 'Winter Wear' %} selected {% endif %}>Winter Wear</option>
+          <option value="Summer Wear" {% if val.dresstype == 'Summer Wear' %} selected {% endif %}>Summer Wear</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Platform</label>
+        <select name="platform" class="form-select" required>
+          <option value="Myntra" {% if val.platform == 'Myntra' %} selected {% endif %}>Myntra</option>
+          <option value="Meesho" {% if val.platform == 'Meesho' %} selected {% endif %}>Meesho</option>
+          <option value="Amazon" {% if val.platform == 'Amazon' %} selected {% endif %}>Amazon</option>
+          <option value="Flipkart" {% if val.platform == 'Flipkart' %} selected {% endif %}>Flipkart</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Type</label><br>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="Gen" value="Male" {% if val.gendertype == 'Male' %} checked {% endif %} required>
+          <label class="form-check-label">Male</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="Gen" value="Female" {% if val.gendertype == 'Female' %} checked {% endif %} required>
+          <label class="form-check-label">Female</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="Gen" value="Kids" {% if val.gendertype == 'Kids' %} checked {% endif %} required>
+          <label class="form-check-label">Kids</label>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Design</label>
+        <input type="file" name="file" class="form-control" />
+        <img src="{{ val.design.url }}" alt="Current Design" height="80" width="120" class="mt-2"/>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Season</label>
+        <select name="season" class="form-select" required>
+          <option value="Spring" {% if val.season == 'Spring' %} selected {% endif %}>Spring Season (Vasant) - February to March</option>
+          <option value="Summer" {% if val.season == 'Summer' %} selected {% endif %}>Summer Season (Grishma) - March to May</option>
+          <option value="Monsoon" {% if val.season == 'Monsoon' %} selected {% endif %}>Monsoon Season (Varsha) - June to September</option>
+          <option value="Autumn" {% if val.season == 'Autumn' %} selected {% endif %}>Autumn Season (Sharad) - October to November</option>
+          <option value="Pre-Winter" {% if val.season == 'Pre-Winter' %} selected {% endif %}>Pre-Winter Season (Hemant) - December to January</option>
+          <option value="Winter" {% if val.season == 'Winter' %} selected {% endif %}>Winter Season (Shishir) - January to February</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Description</label>
+        <textarea name="textfield2" class="form-control" rows="4" required>{{ val.discription }}</textarea>
+      </div>
+
+      <div class="text-center">
+        <input type="submit" name="Submit" value="UPDATE" class="btn btn-success" />
+      </div>
+    </form>
+  </div>
+</div>
+
 {% endblock %}

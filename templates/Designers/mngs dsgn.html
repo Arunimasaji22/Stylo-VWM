@@ -1,39 +1,278 @@
 {% extends 'Designers/designer_index.html' %}
 {% block body %}
-<form id="form1" name="form1" method="post" action="/searchdesign#about">
-  <table border="1" class="table table-success table-striped">
-    <tr>
-      <th colspan="4" align="center">Type
-        <label>
-        <input type="text" name="textfield" required class="bg-transparent" value="{{ a }}"/>
-        <input type="submit" name="Submit2" value="Search" class="btn btn-outline-success"/>
-      </label></th>
-    </tr>
-    <tr>
-      <th>Type</th>
-      <th>Design </th>
-      <th>Description </th>
-      <th>&nbsp;</th>
-    </tr>
-       {% for i in val %}
-    <tr>
-      <td>&nbsp;{{ i.type }}</td>
-      <td><img src="{{ i.design.url }}" alt="" height="80" width="120"/></td>
-      <td>&nbsp;{{ i.discription }}</td>
-      <td><p><a href="editdesign/{{ i.id }}#about"  class="btn btn-outline-primary">edit</a></p>
-      <p><a href="deletedesign/{{ i.id }}"  class="btn btn-outline-danger">delete</a></p>
-      <p><a href="more_designs/{{ i.id }}#about"  class="btn btn-outline-secondary">View more designs</a></p>
-      </td>
-    </tr>
-       {% endfor %}
+<!-- CSS for custom animations and gradients -->
+<style>
+    :root {
+        --gradient-primary: linear-gradient(135deg, #43a047, #2e7d32);
+        --gradient-secondary: linear-gradient(135deg, #4CAF50, #388E3C);
+        --gradient-accent: linear-gradient(45deg, #8BC34A, #689F38);
+        --gradient-dark: linear-gradient(135deg, #2E7D32, #1B5E20);
+        --gradient-light: linear-gradient(135deg, #A5D6A7, #81C784);
+        --gradient-card: linear-gradient(135deg, #ffffff, #f9f9f9);
+        --gradient-button: linear-gradient(45deg, #43a047, #2e7d32);
+        --gradient-danger: linear-gradient(45deg, #f44336, #d32f2f);
+        --gradient-info: linear-gradient(45deg, #2196F3, #1976D2);
+        --gradient-edit: linear-gradient(45deg, #42A5F5, #1E88E5);
+        --gradient-view: linear-gradient(45deg, #78909C, #546E7A);
+    }
 
+    body {
+        background: linear-gradient(135deg, #f5f7fa, #e4e7eb);
+    }
 
-    <tr>
-      <td colspan="4" align="center"><label>
-        <div><a href="adddesign#about" class="btn btn-success">ADD</a></div>
-      </label></td>
-    </tr>
-  </table>
-  <div align="center"></div>
-</form>
+    .fade-in-up {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    .design-card {
+        transition: all 0.3s ease;
+        overflow: hidden;
+        background: var(--gradient-card);
+        border: none;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    }
+    .design-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    }
+    .design-card:hover img {
+        transform: scale(1.05);
+    }
+    .design-card img {
+        transition: transform 0.5s ease;
+    }
+    .search-container {
+        background: var(--gradient-primary);
+        border-radius: 15px;
+        padding: 30px;
+        box-shadow: 0 10px 30px rgba(46, 125, 50, 0.3);
+        position: relative;
+        overflow: hidden;
+    }
+    .search-container::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+        transform: rotate(45deg);
+        z-index: 1;
+    }
+    .search-form-content {
+        position: relative;
+        z-index: 2;
+    }
+    .floating {
+        animation: float 3s ease-in-out infinite;
+    }
+    @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+        100% { transform: translateY(0px); }
+    }
+    .pulse {
+        animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+    }
+    .btn-add {
+        background: var(--gradient-button);
+        border: none;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+        box-shadow: 0 5px 15px rgba(46, 125, 50, 0.4);
+    }
+    .btn-add:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: var(--gradient-dark);
+        transition: all 0.6s;
+        z-index: -1;
+    }
+    .btn-add:hover:before {
+        left: 0;
+    }
+    .btn-add:hover {
+        box-shadow: 0 8px 25px rgba(46, 125, 50, 0.6);
+    }
+    .actions-btn {
+        transform: scale(0.9);
+        transition: all 0.3s;
+        border: none;
+    }
+    .actions-btn:hover {
+        transform: scale(1);
+    }
+    .btn-edit {
+        background: var(--gradient-edit);
+        color: white;
+    }
+    .btn-delete {
+        background: var(--gradient-danger);
+        color: white;
+    }
+    .btn-view {
+        background: var(--gradient-view);
+        color: white;
+    }
+    .heading-gradient {
+        background: var(--gradient-primary);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        display: inline-block;
+        font-weight: bold;
+    }
+    .badge-season {
+        background: var(--gradient-accent);
+    }
+    .badge-gender {
+        background: var(--gradient-info);
+    }
+    .badge-type {
+        background: var(--gradient-secondary);
+    }
+    .card-footer {
+        background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(240,240,240,0.5));
+    }
+    .gallery-container {
+        position: relative;
+    }
+    .gallery-container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle at 50% 0%, rgba(139, 195, 74, 0.1) 0%, rgba(255,255,255,0) 70%);
+        z-index: -1;
+    }
+</style>
+
+<div class="container py-5">
+    <!-- Animated Search Section -->
+    <div class="search-container mb-5 floating">
+        <div class="search-form-content">
+            <h4 class="text-white text-center mb-4">
+                <i class="fas fa-search fa-bounce me-2"></i>Search Design by Type
+            </h4>
+            <form id="searchForm" method="post" action="/searchdesign#about">
+                <div class="input-group input-group-lg">
+                    <input type="text" name="textfield" required class="form-control rounded-pill rounded-end-0" 
+                        placeholder="Enter Design Type..." value="{{ a }}"/>
+                    <button type="submit" name="Submit2" class="btn btn-light rounded-pill rounded-start-0 px-4 pulse">
+                        <i class="fas fa-search me-2"></i>Search
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Design Gallery Heading -->
+    <div class="mb-4 fade-in-up">
+        <h3 class="heading-gradient display-5">Design Gallery</h3>
+        <div class="mt-2 w-50">
+            <div style="height: 3px; background: var(--gradient-primary);"></div>
+        </div>
+    </div>
+    
+    <!-- Design Cards (Grid View) -->
+    <div class="gallery-container">
+        <div class="row g-4 mb-5" id="designs-container">
+            {% for i in val %}
+            <div class="col-md-6 col-lg-4 fade-in-up design-item">
+                <div class="card design-card h-100">
+                    <div class="position-relative overflow-hidden" style="height: 220px;">
+                        <img src="{{ i.design.url }}" alt="{{ i.dressname }}" class="w-100 h-100 object-fit-cover"/>
+                        <div class="position-absolute top-0 end-0 m-2">
+                            <span class="badge badge-season">{{ i.season }}</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title heading-gradient">{{ i.dressname }}</h5>
+                        <div class="d-flex justify-content-between mb-2">
+                            <span class="badge badge-gender">{{ i.gendertype }}</span>
+                            <span class="badge badge-type">{{ i.dresstype }}</span>
+                        </div>
+                        <p class="card-text text-muted small">{{ i.discription }}</p>
+                    </div>
+                    <div class="card-footer border-0">
+                        <div class="d-flex justify-content-between">
+                            <a href="editdesign/{{ i.id }}#about" class="btn btn-sm actions-btn btn-edit">
+                                <i class="fas fa-edit me-1"></i> Edit
+                            </a>
+                            <a href="deletedesign/{{ i.id }}" class="btn btn-sm actions-btn btn-delete">
+                                <i class="fas fa-trash me-1"></i> Delete
+                            </a>
+                            <a href="more_designs/{{ i.id }}#about" class="btn btn-sm actions-btn btn-view">
+                                <i class="fas fa-eye me-1"></i> View
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    
+    <!-- Add new design button with animation -->
+    <div class="text-center mt-5 mb-4 fade-in-up">
+        <a href="adddesign#about" class="btn btn-add btn-lg text-white px-5 py-3">
+            <i class="fas fa-plus-circle me-2"></i>ADD NEW DESIGN
+        </a>
+    </div>
+</div>
+
+<!-- JavaScript for animations -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Fade-in effect for elements
+    const fadeElements = document.querySelectorAll('.fade-in-up');
+    
+    function checkPosition() {
+        for (let i = 0; i < fadeElements.length; i++) {
+            const element = fadeElements[i];
+            const positionFromTop = element.getBoundingClientRect().top;
+            
+            if (positionFromTop - window.innerHeight <= 0) {
+                setTimeout(() => {
+                    element.classList.add('visible');
+                }, i * 100); // Staggered animation
+            }
+        }
+    }
+    
+    // Initial check and on scroll
+    window.addEventListener('scroll', checkPosition);
+    checkPosition();
+    
+    // Search form animation
+    const searchInput = document.querySelector('input[name="textfield"]');
+    searchInput.addEventListener('focus', function() {
+        this.parentElement.style.transform = 'scale(1.03)';
+        this.parentElement.style.boxShadow = '0 10px 30px rgba(0,0,0,0.2)';
+    });
+    
+    searchInput.addEventListener('blur', function() {
+        this.parentElement.style.transform = 'scale(1)';
+        this.parentElement.style.boxShadow = 'none';
+    });
+});
+</script>
 {% endblock %}

@@ -34,6 +34,284 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+
+  <style>
+    /* Navbar animations and gradient colors */
+    #header {
+      transition: all 0.4s ease;
+      animation: slideInLeft 0.8s ease-out;
+      background: linear-gradient(180deg, #2c2f3f 0%, #1a1c27 100%);
+      border-right: 3px solid;
+      border-image: linear-gradient(to bottom, #149ddd, #6e45e2) 1;
+    }
+
+    @keyframes slideInLeft {
+      from {
+        transform: translateX(-100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    .nav-menu a {
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s ease;
+    }
+
+    .nav-menu a::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #149ddd, #6e45e2);
+      transition: width 0.4s ease;
+    }
+
+    .nav-menu a:hover::before {
+      width: 100%;
+    }
+
+    .nav-menu a:hover {
+      color: #fff;
+      background: linear-gradient(90deg, rgba(20, 157, 221, 0.1), rgba(110, 69, 226, 0.1));
+      padding-left: 30px;
+    }
+
+    .nav-menu a:hover i {
+      transform: rotate(360deg);
+      background: linear-gradient(90deg, #149ddd, #6e45e2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .nav-menu i {
+      transition: all 0.8s ease;
+    }
+
+    .nav-menu a.active {
+      background: linear-gradient(90deg, rgba(20, 157, 221, 0.2), rgba(110, 69, 226, 0.2));
+      border-left: 4px solid;
+      border-image: linear-gradient(to bottom, #149ddd, #6e45e2) 1;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Staggered animation for menu items */
+    .nav-menu li {
+      opacity: 0;
+      transform: translateX(-20px);
+      animation: fadeInRight 0.5s ease forwards;
+    }
+
+    .nav-menu li:nth-child(1) { animation-delay: 0.1s; }
+    .nav-menu li:nth-child(2) { animation-delay: 0.2s; }
+    .nav-menu li:nth-child(3) { animation-delay: 0.3s; }
+    .nav-menu li:nth-child(4) { animation-delay: 0.4s; }
+    .nav-menu li:nth-child(5) { animation-delay: 0.5s; }
+    .nav-menu li:nth-child(6) { animation-delay: 0.6s; }
+    .nav-menu li:nth-child(7) { animation-delay: 0.7s; }
+    .nav-menu li:nth-child(8) { animation-delay: 0.8s; }
+    .nav-menu li:nth-child(9) { animation-delay: 0.9s; }
+    .nav-menu li:nth-child(10) { animation-delay: 1.0s; }
+
+    @keyframes fadeInRight {
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    /* Pulse animation for active nav item */
+    .nav-menu a.active i {
+      animation: pulse 2s infinite;
+      background: linear-gradient(90deg, #149ddd, #6e45e2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+
+    /* Base section styling with different color themes */
+    section {
+      transition: background-color 0.5s ease;
+      padding: 60px 0;
+      overflow: hidden;
+    }
+
+    /* Home section - Blue theme */
+    #hero {
+      background: linear-gradient(135deg, #149ddd 0%, #2c2f3f 100%);
+      color: #fff;
+    }
+
+    /* Recommendation section - Purple theme */
+    .recommendation-section {
+      background: linear-gradient(135deg, #6e45e2 0%, #8d66ff 100%);
+      color: #fff;
+    }
+
+    /* Trend Analysis section - Teal theme */
+    .trend-analysis-section {
+      background: linear-gradient(135deg, #20c997 0%, #0bceaf 100%);
+      color: #fff;
+    }
+
+    /* Wardrobe Management section - Pink theme */
+    .wardrobe-section {
+      background: linear-gradient(135deg, #e83e8c 0%, #ff6b9d 100%);
+      color: #fff;
+    }
+
+    /* Chat section - Orange theme */
+    .chat-section {
+      background: linear-gradient(135deg, #fd7e14 0%, #ffb347 100%);
+      color: #fff;
+    }
+
+    /* Mix and Match section - Green theme */
+    .mix-match-section {
+      background: linear-gradient(135deg, #28a745 0%, #5cb85c 100%);
+      color: #fff;
+    }
+
+    /* Trend API section - Indigo theme */
+    .trend-api-section {
+      background: linear-gradient(135deg, #6610f2 0%, #8540f5 100%);
+      color: #fff;
+    }
+
+    /* Complaints section - Red theme */
+    .complaints-section {
+      background: linear-gradient(135deg, #dc3545 0%, #ff6b6b 100%);
+      color: #fff;
+    }
+
+    /* Rating section - Yellow theme */
+    .rating-section {
+      background: linear-gradient(135deg, #ffc107 0%, #ffda6a 100%);
+      color: #212529;
+    }
+
+    /* Section header styling */
+    .section-title {
+      text-align: center;
+      padding-bottom: 30px;
+    }
+
+    .section-title h2 {
+      font-size: 32px;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .section-title h2::after {
+      content: '';
+      position: absolute;
+      display: block;
+      width: 50px;
+      height: 3px;
+      background: #fff;
+      bottom: -10px;
+      left: calc(50% - 25px);
+    }
+
+    /* Card styling for different sections */
+    .section-card {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      margin-bottom: 30px;
+    }
+
+    .section-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Custom styling for section content */
+    .recommendation-section .section-card {
+      border-left: 4px solid #6e45e2;
+    }
+
+    .trend-analysis-section .section-card {
+      border-left: 4px solid #20c997;
+    }
+
+    .wardrobe-section .section-card {
+      border-left: 4px solid #e83e8c;
+    }
+
+    .chat-section .section-card {
+      border-left: 4px solid #fd7e14;
+    }
+
+    .mix-match-section .section-card {
+      border-left: 4px solid #28a745;
+    }
+
+    .trend-api-section .section-card {
+      border-left: 4px solid #6610f2;
+    }
+
+    .complaints-section .section-card {
+      border-left: 4px solid #dc3545;
+    }
+
+    .rating-section .section-card {
+      border-left: 4px solid #ffc107;
+    }
+
+    /* Main content area with suitable background color */
+    .about {
+      background-color: #f8f9fa;  /* Light gray background - subtle and professional */
+    }
+    
+    /* Section container styling */
+    .about .container {
+      background-color: #ffffff;  /* White container for content */
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+    
+    /* For pages that need a warmer feel (fashion/clothing related) */
+    .wardrobe-content .container {
+      background-color: #ffffff;
+      border-left: 4px solid #149ddd;  /* Brand color accent */
+    }
+    
+    /* For recommendation pages */
+    .recommendation-content .container {
+      background-color: #ffffff;
+      border-top: 4px solid #149ddd;  /* Brand color accent */
+    }
+    
+    /* Card styling for dress displays */
+    .card {
+      background-color: #ffffff;
+      border: none;
+      transition: all 0.3s ease;
+    }
+    
+    /* Heading styles */
+    h2.text-center {
+      color: #333333;
+      margin-bottom: 25px;
+    }
+  </style>
 </head>
 
 <body>
@@ -59,13 +337,16 @@
 {##}
       <nav id="navbar" class="nav-menu navbar">
         <ul>
-          <li><a href="#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li>
-          <li><a href="/wardrobe#about" ><i class="bx bx-user"></i> <span>Wardrobe management</span></a></li>
-          <li><a href="/dress_recommendation#about" ><i class="bx bx-file-blank"></i> <span>Recommenadation</span></a></li>
-          <li><a href="#about" ><i class="bx bx-book-content"></i> <span>Chat</span></a></li>
-          <li><a href="#about" ><i class="bx bx-server"></i> <span>Mix and match</span></a></li>
-          <li><a href="#about" ><i class="bx bx-server"></i> <span>Trend analysis</span></a></li>
-          <li><a href="{% url 'logout' %}" ><i class="bx bx-envelope"></i> <span>Logout</span></a></li>
+          <li><a href="#hero" class="nav-link scrollto active"><i class="bx bx-home-alt"></i> <span>Home</span></a></li>
+          <li><a href="/dress_recommendation#about"><i class="bx bx-bulb"></i> <span>Recommendation</span></a></li>
+          <li><a href="/dress_category1#about"><i class="bx bx-trending-up"></i> <span>Trend Analysis</span></a></li>
+          <li><a href="/dress_category#about"><i class="bx bx-closet"></i> <span>Wardrobe Management</span></a></li>
+          <li><a href="/Aichatbot#about"><i class="bx bx-chat"></i> <span>Chat</span></a></li>
+          <li><a href="/upload_image#about"><i class="bx bx-shuffle"></i> <span>Mix and Match</span></a></li>
+          <li><a href="/trend_analysis_api#about"><i class="bx bx-line-chart"></i> <span>Trend Analysis API</span></a></li>
+          <li><a href="/view_complaints#about"><i class="bx bx-message-alt-detail"></i> <span>Complaints</span></a></li>
+          <li><a href="/rating_view#about"><i class="bx bx-star"></i> <span>Rating</span></a></li>
+          <li><a href="/"><i class="bx bx-log-out"></i> <span>Logout</span></a></li>
         </ul>
       </nav><!-- .nav-menu -->
     </div>

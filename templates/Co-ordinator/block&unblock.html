@@ -1,44 +1,176 @@
 {% extends 'Co-ordinator/homeindex.html' %}
 {% block body %}
+<div class="container-fluid py-4">
+  <!-- Page Title with Divider -->
+  <div class="row mb-4">
+    <div class="col-12">
+      <h3 class="text-success fw-bold">Verify Designers</h3>
+      <hr class="divider" style="height: 3px; background: linear-gradient(to right, #198754, #20c997, #d1e7dd); width: 120px; margin-left: 0;">
+      <p class="text-muted">Review and manage designer verification requests on the VirtualWardrobe platform.</p>
+    </div>
+  </div>
 
-<body>
-<form id="form1" name="form1" method="post" action="block1#about">
-  <table width="504" height="152" border="1" class="table table-success table-striped">
-    <tr>
-      <th colspan="8"><label> Name    :
-        <input type="text" name="textfield" value="{{ a }}" required class="bg-transparent"/>
-        <input type="submit" name="Submit" value="Search" class="btn btn-outline-success" />
-      </label></th>
-    </tr>
-    <tr>
-      <th>Name</th>
-      <th>Gender</th>
-      <th>Address</th>
-      <th>Licenseproof</th>
-      <th>Photo</th>
-      <th>Phone</th>
-      <th>Email</th>
-      <th>&nbsp;</th>
-    </tr>
-      {% for i in val %}
-          {% if i.LOGIN.type != 'pending' and i.LOGIN.type != 'Rejected'%}
-    <tr>
-      <td>{{ i.Name}}</td>
-      <td>&nbsp;{{ i.Gender }}</td>
-      <td>{{ i.Place }}<br>
-      {{ i.Post }}<br>
-      {{ i.Pin }}
-      </td>
-      <td>&nbsp;{{ i.License }}</td>
-      <td><img src="{{ i.Photo.url }}" width="100" height="100" ></td>
-      <td>{{ i.Phone }}</td>
-      <td>{{ i.Email }}</td>
-      <td>{% if i.LOGIN.type == 'designer' %}<a href="block_designer/{{ i.LOGIN.id }}" class="btn btn-outline-danger">Block</a><br>
-          {% else %}<a href="unblock_designer/{{ i.LOGIN.id }}" class="btn btn-outline-info">Unblock</a>{% endif %}</td>
-    </tr>
-          {% endif %}
-       {% endfor %}
-  </table>
-</form>
-</body>
+  <!-- Search Form Section -->
+  <div class="card shadow-sm mb-4 border-0">
+    <div class="card-body bg-light">
+      <form id="searchForm" method="post" action="block1#about" class="row g-3 align-items-center">
+        <div class="col-md-6">
+          <div class="input-group">
+            <span class="input-group-text bg-transparent border-end-0"><i class="bi bi-search text-success"></i></span>
+            <input type="text" name="textfield" value="{{ a }}" required class="form-control border-start-0" placeholder="Search designer by name..." aria-label="Search designer">
+          </div>
+        </div>
+        <div class="col-auto">
+          <button type="submit" name="Submit" class="btn btn-success px-4">
+            <i class="bi bi-search me-1"></i> Search
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Designers Table Section -->
+  <div class="card shadow-sm border-0">
+    <div class="card-header bg-success text-white py-3">
+      <h5 class="mb-0">Designer Verification List</h5>
+    </div>
+    <div class="card-body p-0">
+      <!-- Table Container with horizontal scroll for mobile -->
+      <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0">
+          <thead class="table-success">
+            <tr>
+              <th class="py-3">Name</th>
+              <th class="py-3">Gender</th>
+              <th class="py-3">Address</th>
+              <th class="py-3">License</th>
+              <th class="py-3">Photo</th>
+              <th class="py-3">Contact</th>
+              <th class="py-3">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for i in val %}
+              {% if i.LOGIN.type != 'pending' and i.LOGIN.type != 'Rejected' %}
+                <tr>
+                  <td class="fw-bold">{{ i.Name }}</td>
+                  <td>{{ i.Gender }}</td>
+                  <td>
+                    <small class="text-muted">
+                      {{ i.Place }}<br>
+                      {{ i.Post }}<br>
+                      {{ i.Pin }}
+                    </small>
+                  </td>
+                  <td>
+                    <span class="badge bg-secondary rounded-pill">{{ i.License }}</span>
+                  </td>
+                  <td>
+                    <img src="{{ i.Photo.url }}" class="rounded border" width="70" height="70" alt="{{ i.Name }}" loading="lazy">
+                  </td>
+                  <td>
+                    <div><small class="text-primary"><i class="bi bi-phone me-1"></i>{{ i.Phone }}</small></div>
+                    <div><small class="text-primary"><i class="bi bi-envelope me-1"></i>{{ i.Email }}</small></div>
+                  </td>
+                  <td>
+                    {% if i.LOGIN.type == 'designer' %}
+                      <a href="block_designer/{{ i.LOGIN.id }}" class="btn btn-danger btn-sm d-block mb-2">
+                        <i class="bi bi-lock-fill me-1"></i> Block Access
+                      </a>
+                    {% else %}
+                      <a href="unblock_designer/{{ i.LOGIN.id }}" class="btn btn-success btn-sm d-block">
+                        <i class="bi bi-check-circle-fill me-1"></i> Activate
+                      </a>
+                    {% endif %}
+                  </td>
+                </tr>
+              {% endif %}
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      
+      <!-- Empty State for when no results -->
+      {% if not val %}
+      <div class="text-center py-5">
+        <div class="mb-3">
+          <i class="bi bi-person-x" style="font-size: 3rem; color: #198754;"></i>
+        </div>
+        <h5 class="text-muted">No designers found</h5>
+        <p class="text-muted small">Try searching with a different name or check back later</p>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<!-- Custom Style for this section -->
+<style>
+  /* Custom styles for the designer verification table */
+  .table th {
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+  }
+  
+  .table td {
+    vertical-align: middle;
+    padding: 0.75rem;
+  }
+  
+  .table tbody tr:hover {
+    background-color: rgba(40, 167, 69, 0.05);
+  }
+  
+  .badge {
+    font-weight: normal;
+    padding: 0.4rem 0.6rem;
+  }
+  
+  .btn-sm {
+    font-size: 0.8rem;
+    padding: 0.25rem 0.5rem;
+  }
+  
+  .card {
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .divider {
+    opacity: 1;
+  }
+  
+  .table-responsive {
+    min-height: 200px;
+  }
+  
+  body {
+    background-color: #f8f9fa;
+  }
+  
+  .container-fluid {
+    max-width: 1400px;
+  }
+  .table-responsive {
+    overflow-x: auto;
+    max-width: 100%;
+    white-space: nowrap;
+}
+
+.table th, .table td {
+    min-width: 120px; /* Adjust column width as needed */
+}
+
+@media (max-width: 768px) {
+    .table th, .table td {
+        font-size: 14px; /* Reduce font size for smaller screens */
+        padding: 8px;
+    }
+}
+
+</style>
+
+<!-- Bootstrap Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
 {% endblock %}

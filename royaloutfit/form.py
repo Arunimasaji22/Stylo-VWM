@@ -4,5 +4,5 @@ from .models import WardrobeTable
 class WardrobeForm(forms.ModelForm):
     class Meta:
         model = WardrobeTable
-        fields = ['Dress', 'model_name', 'dress_type']
+        fields = ['Name','Dress', 'model_name', 'dress_type', 'gendertype']
        

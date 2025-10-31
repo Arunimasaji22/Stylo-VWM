@@ -24,7 +24,7 @@ class user_table(models.Model):
 class complaint_table(models.Model):
     USER=models.ForeignKey(user_table,on_delete=models.CASCADE)
     complaint=models.TextField()
-    Date=models.DateField()
+    Date=models.DateField(auto_now_add=True)
     reply=models.CharField(max_length=100)
 
 
@@ -41,20 +41,33 @@ class designers_table(models.Model):
     Certificate=models.FileField()
     Photo=models.FileField()
 
-
-class rating_table(models.Model):
-    USER = models.ForeignKey(user_table, on_delete=models.CASCADE)
-    Reviews=models.TextField()
-    rating=models.FloatField()
-    Date=models.DateField()
-
-
 class designs_tables(models.Model):
-    type=models.CharField(max_length=100)
+    dressname=models.CharField(max_length=100)
+    platform=models.CharField(max_length=100)
+    gendertype=models.CharField(max_length=100)
+    dresstype=models.CharField(max_length=100)
     design=models.FileField()
     discription=models.TextField()
     season = models.CharField(max_length=100, null=True, blank=True)
     DESIGNER=models.ForeignKey(designers_table, on_delete=models.CASCADE)
+
+class designs1_tables(models.Model):
+    dressname=models.CharField(max_length=100)
+    platform=models.CharField(max_length=100)
+    design=models.FileField()
+
+class rating_table(models.Model):
+    USER = models.ForeignKey(user_table, on_delete=models.CASCADE)
+    DESIGN = models.ForeignKey(designs_tables, on_delete=models.CASCADE)
+    Reviews=models.TextField()
+    rating=models.FloatField()
+    Date=models.DateField()
+
+class rating_table1(models.Model):
+    USER = models.ForeignKey(user_table, on_delete=models.CASCADE)
+    Reviews=models.CharField(max_length=200, null=True, blank=True)
+    rating=models.FloatField()
+    Date=models.DateField(auto_now_add=True)
 
 
 class custom_desgin_table(models.Model):
@@ -73,15 +86,23 @@ class chat(models.Model):
 
 
 class MoreDesignTable(models.Model):
-    DESIGN = models.ForeignKey(designers_table, on_delete=models.CASCADE)
+    DESIGN = models.ForeignKey(designs_tables, on_delete=models.CASCADE)
     design_more = models.FileField()
 
 
 class WardrobeTable(models.Model):
     USER = models.ForeignKey(user_table, on_delete=models.CASCADE)
+    Name = models.CharField(max_length=100, null=True, blank=True)
     Dress = models.FileField()
     model_name = models.CharField(max_length=100, null=True, blank=True)
     dress_type = models.CharField(max_length=100, null=True, blank=True)
+    gendertype=models.CharField(max_length=100)
     date = models.DateField(auto_now_add=True)
+
+class TestImageTable(models.Model):
+    image = models.FileField(upload_to='test/', null=True, blank=True)
+    USERID= models.ForeignKey(user_table, on_delete=models.CASCADE,null=True,blank=True)
+    date= models.DateField(auto_now_add=True)
+    last_updated = models.DateTimeField(auto_now=True) 
 
 

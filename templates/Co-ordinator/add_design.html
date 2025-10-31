@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Design</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .card {
+            border-radius: 15px;
+            border: none;
+        }
+        .card-header {
+            background-color: #6c5ce7;
+            color: white;
+            border-radius: 15px 15px 0 0 !important;
+        }
+        .btn-primary {
+            background-color: #6c5ce7;
+            border-color: #6c5ce7;
+        }
+        .btn-primary:hover {
+            background-color: #5b4bc9;
+            border-color: #5b4bc9;
+        }
+        .form-file-preview {
+            width: 100%;
+            height: 200px;
+            border: 2px dashed #dee2e6;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px;
+            overflow: hidden;
+        }
+        .form-file-preview img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+    </style>
+</head>
+<body>
+    <div class="container form-container py-5">
+        <div class="card shadow">
+            <div class="card-header p-4">
+                <h2 class="mb-0"><i class="fas fa-tshirt me-2"></i>Add New Design</h2>
+            </div>
+            <div class="card-body p-4">
+                <form method="post" enctype="multipart/form-data" id="designForm">
+                    <div class="mb-4">
+                        <label for="dressname" class="form-label fw-bold">Dress Name:</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-tag"></i></span>
+                            <input type="text" name="dressname" id="dressname" class="form-control form-control-lg" placeholder="Enter dress name" required>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label for="platform" class="form-label fw-bold">Platform:</label>
+                        <select name="platform" id="platform" class="form-select form-select-lg">
+                            <option value="Flipkart">Flipkart</option>
+                            <option value="Meesho">Meesho</option>
+                            <option value="Myntra">Myntra</option>
+                            <option value="Amazon">Amazon</option>
+                        </select>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label for="design" class="form-label fw-bold">Upload Design:</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-file-image"></i></span>
+                            <input type="file" name="design" id="design" class="form-control form-control-lg" accept="image/*,application/pdf">
+                        </div>
+                        <div class="form-text">Accepted formats: Images and PDF files</div>
+                        <div class="form-file-preview mt-2" id="preview">
+                            <div class="text-center text-muted">
+                                <i class="fas fa-cloud-upload-alt fa-3x mb-2"></i>
+                                <p>Preview will appear here</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="d-grid gap-2 mt-4">
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            <i class="fas fa-plus-circle me-2"></i>Add Design
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const designInput = document.getElementById('design');
+            const previewElement = document.getElementById('preview');
+            
+            designInput.addEventListener('change', function() {
+                const file = this.files[0];
+                previewElement.innerHTML = '';
+                if (!file) {
+                    previewElement.innerHTML = `
+                        <div class="text-center text-muted">
+                            <i class="fas fa-cloud-upload-alt fa-3x mb-2"></i>
+                            <p>Preview will appear here</p>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                if (file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        previewElement.innerHTML = `<img src="${e.target.result}" alt="Design Preview">`;
+                    };
+                    reader.readAsDataURL(file);
+                } else if (file.type === 'application/pdf') {
+                    previewElement.innerHTML = `
+                        <div class="text-center">
+                            <i class="fas fa-file-pdf fa-4x text-danger mb-2"></i>
+                            <p class="mt-2">${file.name}</p>
+                        </div>
+                    `;
+                }
+            });
+            
+            document.getElementById('designForm').addEventListener('submit', function(e) {
+                const dressname = document.getElementById('dressname').value.trim();
+                const design = document.getElementById('design').files.length;
+                
+                if (!dressname) {
+                    alert('Please enter a dress name');
+                    e.preventDefault();
+                }
+                
+                if (design === 0) {
+                    alert('Please upload a design file');
+                    e.preventDefault();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

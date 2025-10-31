@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Designs</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding-bottom: 3rem;
+        }
+        .design-container {
+            position: relative;
+        }
+        .design-card {
+            transition: all 0.3s ease;
+            height: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            border: none;
+        }
+        .design-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+        }
+        .card-img-container {
+            height: 250px;
+            overflow: hidden;
+            background-color: #f1f1f1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .card-img-top {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .design-card:hover .card-img-top {
+            transform: scale(1.05);
+        }
+        .platform-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 10;
+        }
+        .action-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        .filter-dropdown {
+            min-width: 150px;
+        }
+        .delete-confirm-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        .delete-confirm-dialog {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            transform: translateY(-20px);
+            transition: all 0.3s ease;
+        }
+        .delete-confirm-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .delete-confirm-overlay.active .delete-confirm-dialog {
+            transform: translateY(0);
+        }
+        .btn-add {
+            background-color: #6c5ce7;
+            border-color: #6c5ce7;
+        }
+        .btn-add:hover {
+            background-color: #5b4bc9;
+            border-color: #5b4bc9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container py-4">
+        <div class="header-container">
+            <div>
+                <h2 class="mb-0"><i class="fas fa-tshirt me-2"></i>Manage Designs</h2>
+                <p class="text-muted">Browse and manage your design collection</p>
+            </div>
+            <div class="d-flex gap-2">
+                <div class="dropdown">
+                    <button class="btn btn-light dropdown-toggle" type="button" id="filterDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-filter me-1"></i> Filter
+                    </button>
+                    <ul class="dropdown-menu filter-dropdown" aria-labelledby="filterDropdown">
+                        <li><a class="dropdown-item active" href="#" data-platform="all">All Platforms</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#" data-platform="Flipkart">Flipkart</a></li>
+                        <li><a class="dropdown-item" href="#" data-platform="Meesho">Meesho</a></li>
+                        <li><a class="dropdown-item" href="#" data-platform="Myntra">Myntra</a></li>
+                        <li><a class="dropdown-item" href="#" data-platform="Amazon">Amazon</a></li>
+                    </ul>
+                </div>
+                <div class="input-group" style="width: 250px;">
+                    <input type="text" class="form-control" id="searchDesign" placeholder="Search designs...">
+                    <button class="btn btn-outline-secondary" type="button" id="searchBtn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                <a href="add_design" class="btn btn-add text-white">
+                    <i class="fas fa-plus-circle me-1"></i> Add New Design
+                </a>
+            </div>
+        </div>
+
+        <div id="designsContainer" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            {% for design in designs %}
+            <div class="col design-container" data-platform="{{ design.platform }}">
+                <div class="card design-card shadow-sm h-100">
+                    <div class="card-img-container">
+                        {% if design.design %}
+                        <img src="{{ design.design.url }}" class="card-img-top" alt="{{ design.dressname }}">
+                        {% else %}
+                        <div class="text-center text-muted">
+                            <i class="fas fa-image fa-3x mb-2"></i>
+                            <p>No image available</p>
+                        </div>
+                        {% endif %}
+                        <span class="badge platform-badge bg-primary">{{ design.platform }}</span>
+                    </div>
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">{{ design.dressname }}</h5>
+                        <div class="mt-auto pt-3 action-bar">
+                            <button class="btn btn-sm btn-outline-primary view-btn" data-id="{{ design.id }}">
+                                <i class="fas fa-eye me-1"></i> View
+                            </button>
+                            <button class="btn btn-sm btn-danger delete-btn" data-id="{{ design.id }}" data-name="{{ design.dressname }}">
+                                <i class="fas fa-trash me-1"></i> Delete
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-12">
+                <div class="empty-state">
+                    <i class="fas fa-folder-open fa-5x text-muted mb-3"></i>
+                    <h4>No designs found</h4>
+                    <p class="text-muted">Start by adding a new design to your collection</p>
+                    <a href="add_design" class="btn btn-add text-white mt-2">
+                        <i class="fas fa-plus-circle me-1"></i> Add First Design
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div class="delete-confirm-overlay" id="deleteModal">
+        <div class="delete-confirm-dialog">
+            <i class="fas fa-exclamation-triangle fa-3x text-danger mb-3"></i>
+            <h4>Delete Design</h4>
+            <p id="deleteConfirmText">Are you sure you want to delete this design?</p>
+            <div class="d-flex justify-content-center gap-2 mt-4">
+                <button id="cancelDelete" class="btn btn-outline-secondary">Cancel</button>
+                <form id="deleteForm" action="" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Filter functionality
+            const filterLinks = document.querySelectorAll('.dropdown-item[data-platform]');
+            const designItems = document.querySelectorAll('.design-container');
+            const designContainer = document.getElementById('designsContainer');
+            
+            filterLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Update active state
+                    filterLinks.forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const platform = this.getAttribute('data-platform');
+                    
+                    // Filter designs
+                    let visibleCount = 0;
+                    designItems.forEach(item => {
+                        if (platform === 'all' || item.getAttribute('data-platform') === platform) {
+                            item.style.display = '';
+                            visibleCount++;
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                    
+                    // Show empty state if no items visible
+                    checkEmptyState(visibleCount);
+                });
+            });
+            
+            // Search functionality
+            const searchInput = document.getElementById('searchDesign');
+            const searchBtn = document.getElementById('searchBtn');
+            
+            function performSearch() {
+                const searchTerm = searchInput.value.toLowerCase().trim();
+                let visibleCount = 0;
+                
+                designItems.forEach(item => {
+                    const designName = item.querySelector('.card-title').textContent.toLowerCase();
+                    if (searchTerm === '' || designName.includes(searchTerm)) {
+                        item.style.display = '';
+                        visibleCount++;
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+                
+                checkEmptyState(visibleCount);
+            }
+            
+            searchBtn.addEventListener('click', performSearch);
+            searchInput.addEventListener('keyup', function(e) {
+                if (e.key === 'Enter') {
+                    performSearch();
+                }
+            });
+            
+            // Delete confirmation
+            const deleteModal = document.getElementById('deleteModal');
+            const deleteForm = document.getElementById('deleteForm');
+            const deleteConfirmText = document.getElementById('deleteConfirmText');
+            const cancelDelete = document.getElementById('cancelDelete');
+            const deleteBtns = document.querySelectorAll('.delete-btn');
+            
+            deleteBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const designId = this.getAttribute('data-id');
+                    const designName = this.getAttribute('data-name');
+                    
+                    deleteForm.action = "{% url 'delete_design1' 0 %}".replace('0', designId);
+                    deleteConfirmText.textContent = `Are you sure you want to delete "${designName}"?`;
+                    
+                    deleteModal.classList.add('active');
+                });
+            });
+            
+            cancelDelete.addEventListener('click', function() {
+                deleteModal.classList.remove('active');
+            });
+            
+            deleteModal.addEventListener('click', function(e) {
+                if (e.target === deleteModal) {
+                    deleteModal.classList.remove('active');
+                }
+            });
+            
+            // Check for empty state
+            function checkEmptyState(visibleCount) {
+                if (visibleCount === 0) {
+                    // Create empty state if it doesn't exist
+                    let emptyState = designContainer.querySelector('.empty-state-message');
+                    
+                    if (!emptyState) {
+                        const emptyCol = document.createElement('div');
+                        emptyCol.className = 'col-12 empty-state-message';
+                        emptyCol.innerHTML = `
+                            <div class="empty-state">
+                                <i class="fas fa-search fa-5x text-muted mb-3"></i>
+                                <h4>No matching designs found</h4>
+                                <p class="text-muted">Try adjusting your search or filter criteria</p>
+                                <button class="btn btn-outline-secondary mt-2 reset-filters">
+                                    <i class="fas fa-redo me-1"></i> Reset Filters
+                                </button>
+                            </div>
+                        `;
+                        designContainer.appendChild(emptyCol);
+                        
+                        // Add event listener to reset button
+                        emptyCol.querySelector('.reset-filters').addEventListener('click', function() {
+                            searchInput.value = '';
+                            filterLinks.forEach(l => l.classList.remove('active'));
+                            document.querySelector('[data-platform="all"]').classList.add('active');
+                            
+                            designItems.forEach(item => {
+                                item.style.display = '';
+                            });
+                            
+                            emptyCol.remove();
+                        });
+                    }
+                } else {
+                    // Remove empty state if it exists
+                    const emptyState = designContainer.querySelector('.empty-state-message');
+                    if (emptyState) {
+                        emptyState.remove();
+                    }
+                }
+            }
+            
+            // View design functionality
+            const viewBtns = document.querySelectorAll('.view-btn');
+            viewBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const designId = this.getAttribute('data-id');
+                    // You can implement a modal or redirect to a detail page
+                    // For now, just find the image and show it in a lightbox-style modal
+                    const designCard = this.closest('.design-card');
+                    const image = designCard.querySelector('.card-img-top');
+                    const title = designCard.querySelector('.card-title').textContent;
+                    
+                    if (image) {
+                        // Create a simple lightbox
+                        const lightbox = document.createElement('div');
+                        lightbox.style.position = 'fixed';
+                        lightbox.style.top = '0';
+                        lightbox.style.left = '0';
+                        lightbox.style.width = '100%';
+                        lightbox.style.height = '100%';
+                        lightbox.style.backgroundColor = 'rgba(0,0,0,0.8)';
+                        lightbox.style.display = 'flex';
+                        lightbox.style.alignItems = 'center';
+                        lightbox.style.justifyContent = 'center';
+                        lightbox.style.zIndex = '2000';
+                        lightbox.style.padding = '2rem';
+                        
+                        const content = document.createElement('div');
+                        content.style.position = 'relative';
+                        content.style.maxWidth = '90%';
+                        content.style.maxHeight = '90%';
+                        content.style.backgroundColor = 'white';
+                        content.style.borderRadius = '8px';
+                        content.style.overflow = 'hidden';
+                        
+                        const header = document.createElement('div');
+                        header.style.padding = '1rem';
+                        header.style.borderBottom = '1px solid #dee2e6';
+                        header.style.display = 'flex';
+                        header.style.justifyContent = 'space-between';
+                        header.style.alignItems = 'center';
+                        
+                        const titleEl = document.createElement('h5');
+                        titleEl.textContent = title;
+                        titleEl.style.margin = '0';
+                        
+                        const closeBtn = document.createElement('button');
+                        closeBtn.textContent = '×';
+                        closeBtn.style.border = 'none';
+                        closeBtn.style.background = 'none';
+                        closeBtn.style.fontSize = '1.5rem';
+                        closeBtn.style.cursor = 'pointer';
+                        
+                        const imgContainer = document.createElement('div');
+                        imgContainer.style.padding = '1rem';
+                        
+                        const imgEl = document.createElement('img');
+                        imgEl.src = image.src;
+                        imgEl.style.maxWidth = '100%';
+                        imgEl.style.maxHeight = 'calc(80vh - 4rem)';
+                        imgEl.style.display = 'block';
+                        imgEl.style.margin = '0 auto';
+                        
+                        header.appendChild(titleEl);
+                        header.appendChild(closeBtn);
+                        imgContainer.appendChild(imgEl);
+                        content.appendChild(header);
+                        content.appendChild(imgContainer);
+                        lightbox.appendChild(content);
+                        document.body.appendChild(lightbox);
+                        
+                        closeBtn.addEventListener('click', function() {
+                            document.body.removeChild(lightbox);
+                        });
+                        
+                        lightbox.addEventListener('click', function(e) {
+                            if (e.target === lightbox) {
+                                document.body.removeChild(lightbox);
+                            }
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

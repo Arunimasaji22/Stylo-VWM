@@ -1,36 +1,133 @@
-{% extends 'Co-ordinator/homeindex.html' %}
+{% extends 'Co-ordinator/homeindex.html' %} 
 {% block body %}
 
-<body>
-<form id="form1" name="form1" method="post" action="searchcomplaints#about">
-  <table width="378" border="1" class="table table-success table-striped">
-    <tr>
-      <th colspan="4"><label>Username  :
-        <input type="text" name="textfield" required class="bg-transparent" value="{{ a }}"/>
-              </label>      <label>
-        <input type="submit" name="Submit" value="Search" class="btn btn-outline-success"/>
-                      </label>      </th>
-    </tr>
-    <tr>
-      <th>User</th>
-      <th>Complaints</th>
-      <th>Date</th>
-      <th>Replay</th>
-    </tr>
-       {% for i in val %}
-    <tr>
-      <td>&nbsp;{{ i.USER.Name }}</td>
-      <td>&nbsp;{{ i.complaint }}</td>
-      <td>{{ i.Date }}</td>
-        {% if i.reply == 'waiting' %}
-      <td><a href="sendreplay/{{ i.id }}">Replay</a></td>
-    {% else %}
-    <td>{{ i.reply }}</td>
-    {% endif %}
-    </tr>
-      {% endfor %}
-  </table>
-</form>
-</body>
-{% endblock %}
+<div class="container-fluid py-4">
+  <!-- Page Title with Divider -->
+  <div class="row mb-4">
+    <div class="col-12">
+      <h3 class="text-primary fw-bold">User Complaints</h3>
+      <hr class="divider" style="height: 3px; background: linear-gradient(to right, #3a1c71, #d76d77, #ffaf7b); width: 120px; margin-left: 0;">
+      <p class="text-muted">Review and respond to user complaints submitted on the VirtualWardrobe platform.</p>
+    </div>
+  </div>
 
+  <!-- Search Form Section -->
+  <div class="card shadow-sm mb-4 border-0">
+    <div class="card-body bg-white">
+      <form id="form1" name="form1" method="post" action="searchcomplaints#about" class="row g-3 align-items-center">
+        <div class="col-md-4">
+          <div class="input-group">
+            <span class="input-group-text bg-transparent border-end-0"><i class="bx bx-search text-primary"></i></span>
+            <input type="text" class="form-control border-start-0" name="textfield" placeholder="Search by username" required value="{{ a }}" aria-label="Username">
+          </div>
+        </div>
+        <div class="col-auto">
+          <button type="submit" name="Submit" class="btn btn-primary px-4" style="background: linear-gradient(135deg, #3a1c71, #d76d77); border: none;">
+            <i class="bx bx-search-alt me-1"></i> Search
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Results Table Section -->
+  <div class="card shadow-sm border-0">
+    <div class="card-body bg-white p-0">
+      <!-- Table Container with horizontal scroll for mobile -->
+      <div class="table-responsive" style="min-height: 500px;">
+        <table class="table table-hover align-middle bg-white" style="color: #444444; width: 100%;">
+          <thead style="background: linear-gradient(135deg, #f8f9fa, #f1f2f3);">
+            <tr>
+              <th scope="col" class="py-3">User</th>
+              <th scope="col" class="py-3">Complaints</th>
+              <th scope="col" class="py-3">Date</th>
+              <th scope="col" class="py-3">Reply</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for i in val %}
+            <tr>
+              <td class="fw-medium">{{ i.USER.Name }}</td>
+              <td>{{ i.complaint }}</td>
+              <td>{{ i.Date }}</td>
+              <td>
+                {% if i.reply == 'waiting' %}
+                <a href="sendreplay/{{ i.id }}" class="btn btn-sm btn-primary" style="background: linear-gradient(135deg, #3a1c71, #d76d77); border: none;">
+                  <i class="bx bx-message-dots me-1"></i> Reply
+                </a>
+                {% else %}
+                <span class="text-success">
+                  <i class="bx bx-check-circle me-1"></i> {{ i.reply }}
+                </span>
+                {% endif %}
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      
+      <!-- Empty State for when no results -->
+      {% if not val %}
+      <div class="text-center py-5">
+        <div class="mb-3">
+          <i class="bx bx-message-x" style="font-size: 3rem; color: #d76d77;"></i>
+        </div>
+        <h5 class="text-muted">No complaints found</h5>
+        <p class="text-muted small">Try searching with a different username or check back later</p>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<!-- Custom Style for this section -->
+<style>
+  .table th, .table td {
+    padding: 1rem;
+  }
+  .badge {
+    font-weight: 500;
+    letter-spacing: 0.3px;
+  }
+  .btn-sm {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+  }
+  .card {
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .divider {
+    opacity: 1;
+  }
+  body, .container-fluid {
+    background-color: white;
+  }
+  .table {
+    margin-bottom: 0;
+  }
+  .table-responsive {
+    min-height: 500px;
+    position: relative;
+  }
+  .table-responsive {
+    overflow-x: auto;
+    max-width: 100%;
+    white-space: nowrap;
+}
+
+.table th, .table td {
+    min-width: 120px; /* Adjust column width as needed */
+}
+
+@media (max-width: 768px) {
+    .table th, .table td {
+        font-size: 14px; /* Reduce font size for smaller screens */
+        padding: 8px;
+    }
+}
+
+</style>
+
+{% endblock %}

@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rating Experience</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <!-- Animate.css for animations -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        :root {
+            --primary-color: #f8a5c2; /* Pastel pink */
+            --secondary-color: #c3aed6; /* Pastel purple */
+            --accent-color: #a6dcef; /* Pastel blue */
+            --background-color: #f7f5f2; /* Soft cream */
+            --text-color: #583d72; /* Dark purple for text */
+            --light-color: #ffffff;
+            --dark-color: #583d72;
+        }
+        
+        body {
+            background: var(--background-color);
+            min-height: 100vh;
+            padding: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-color);
+        }
+        
+        .container-fluid {
+            padding: 0 30px;
+        }
+        
+        .card {
+            border: none;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 30px;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+        }
+        
+        .card-header {
+            background: var(--primary-color);
+            color: white;
+            padding: 1.5rem;
+            border-bottom: none;
+        }
+        
+        .card-body {
+            padding: 2rem;
+        }
+        
+        .star-rating {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            direction: rtl;
+            margin: 20px 0;
+        }
+        
+        .star-rating input {
+            display: none;
+        }
+        
+        .star-rating label {
+            font-size: 2.8rem;
+            color: #ddd;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .star-rating input:checked ~ label,
+        .star-rating label:hover,
+        .star-rating label:hover ~ label {
+            color: #ffd166;
+            transform: scale(1.2);
+            text-shadow: 0 0 10px rgba(255, 209, 102, 0.7);
+        }
+        
+        .star-display {
+            color: #ddd;
+            font-size: 1.2rem;
+        }
+        
+        .star-filled {
+            color: #ffd166;
+        }
+        
+        textarea.form-control {
+            border: 2px solid #e9ecef;
+            border-radius: 15px;
+            padding: 15px;
+            min-height: 120px;
+            transition: border-color 0.3s;
+        }
+        
+        textarea.form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.25rem rgba(248, 165, 194, 0.15);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            border-radius: 50px;
+            padding: 10px 30px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 15px rgba(248, 165, 194, 0.3);
+            transition: all 0.3s;
+            color: var(--dark-color);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(195, 174, 214, 0.4);
+            color: var(--dark-color);
+        }
+        
+        .review-card {
+            border-radius: 15px;
+            background-color: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .review-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .review-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: rgba(248, 165, 194, 0.1);
+        }
+        
+        .review-content {
+            padding: 20px;
+        }
+        
+        .review-footer {
+            display: flex;
+            justify-content: flex-end;
+            padding: 10px 20px;
+            background-color: rgba(195, 174, 214, 0.1);
+            color: var(--text-color);
+            font-size: 0.9rem;
+        }
+        
+        .user-avatar {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 15px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .spinner-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        
+        .rating-stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 30px 0;
+        }
+        
+        .stat-box {
+            text-align: center;
+            background-color: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+            flex: 1;
+            margin: 0 10px;
+        }
+        
+        .stat-box:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 10px 0;
+            color: var(--primary-color);
+        }
+        
+        .filters {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        
+        .filter-btn {
+            border: none;
+            background-color: white;
+            padding: 8px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 500;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn.active {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        
+        .filter-btn:hover:not(.active) {
+            background-color: rgba(195, 174, 214, 0.2);
+        }
+        
+        .search-box {
+            position: relative;
+            margin-bottom: 30px;
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: 15px 20px;
+            padding-left: 45px;
+            border-radius: 50px;
+            border: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+        }
+        
+        .search-box input:focus {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            outline: none;
+        }
+        
+        .search-box i {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-color);
+        }
+        
+        .mood-emoji {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .pagination-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        
+        .pagination {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .page-btn {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: white;
+            border: none;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .page-btn:hover, .page-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .feedback-tag {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            font-size: 0.8rem;
+            padding: 3px 10px;
+            border-radius: 20px;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+        
+        .progress {
+            height: 8px;
+            background-color: #e9ecef;
+            margin-bottom: 5px;
+        }
+        
+        .progress-bar {
+            background-color: var(--primary-color);
+            border-radius: 5px;
+        }
+        
+        #confetti-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+        }
+        
+        .new-review-badge {
+            background-color: var(--accent-color);
+            color: var(--dark-color);
+            font-size: 0.8rem;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Spinner -->
+    <div class="spinner-container" id="loadingSpinner">
+        <div class="spinner-border" style="width: 3rem; height: 3rem; color: var(--primary-color);" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+    
+    <!-- Confetti Canvas -->
+    <canvas id="confetti-canvas"></canvas>
+
+    <div class="container-fluid">
+        <header class="text-center my-4">
+            <h1 class="display-4 fw-bold animate__animated animate__fadeIn">Share Your Experience</h1>
+            <p class="lead animate__animated animate__fadeIn animate__delay-1s">We value your feedback!</p>
+        </header>
+        
+        <!-- Submit Rating Card -->
+        <div class="card mb-5 animate__animated animate__fadeIn">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h3 class="m-0"><i class="bi bi-heart-fill me-2"></i>Tell Us What You Think</h3>
+                <span class="badge bg-light text-dark" id="charCount">0/500</span>
+            </div>
+            <div class="card-body">
+                <form id="ratingForm">
+                    {% csrf_token %}
+                    
+                    <!-- Emoji Rating -->
+                    <div class="text-center mb-4">
+                        <label class="form-label fw-bold fs-5">How would you rate your overall experience?</label>
+                        <div class="emoji-rating">
+                            <div class="emoji-option">
+                                <input type="radio" name="emoji-rating" id="emoji1" value="1">
+                                <label for="emoji1" class="emoji-icon">😡</label>
+                                <div>Terrible</div>
+                            </div>
+                            <div class="emoji-option">
+                                <input type="radio" name="emoji-rating" id="emoji2" value="2">
+                                <label for="emoji2" class="emoji-icon">😕</label>
+                                <div>Poor</div>
+                            </div>
+                            <div class="emoji-option">
+                                <input type="radio" name="emoji-rating" id="emoji3" value="3">
+                                <label for="emoji3" class="emoji-icon">😐</label>
+                                <div>Okay</div>
+                            </div>
+                            <div class="emoji-option">
+                                <input type="radio" name="emoji-rating" id="emoji4" value="4">
+                                <label for="emoji4" class="emoji-icon">😊</label>
+                                <div>Good</div>
+                            </div>
+                            <div class="emoji-option">
+                                <input type="radio" name="emoji-rating" id="emoji5" value="5">
+                                <label for="emoji5" class="emoji-icon">😍</label>
+                                <div>Amazing</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Star Rating -->
+                    <div class="mb-4 text-center">
+                        <label class="form-label fw-bold fs-5">Rate your experience with stars:</label>
+                        <div class="star-rating">
+                            <input type="radio" name="rating" id="star5" value="5"><label for="star5"><i class="bi bi-star-fill"></i></label>
+                            <input type="radio" name="rating" id="star4" value="4"><label for="star4"><i class="bi bi-star-fill"></i></label>
+                            <input type="radio" name="rating" id="star3" value="3"><label for="star3"><i class="bi bi-star-fill"></i></label>
+                            <input type="radio" name="rating" id="star2" value="2"><label for="star2"><i class="bi bi-star-fill"></i></label>
+                            <input type="radio" name="rating" id="star1" value="1"><label for="star1"><i class="bi bi-star-fill"></i></label>
+                        </div>
+                        <p class="mt-2 text-muted" id="ratingText">Select a rating</p>
+                    </div>
+                    
+                    <!-- Review Text -->
+                    <div class="mb-4">
+                        <label for="review" class="form-label fw-bold fs-5">Share your thoughts:</label>
+                        <textarea name="review" id="reviewText" class="form-control" rows="4" maxlength="500" placeholder="Tell us what you liked or what we could improve..." required></textarea>
+                    </div>
+                    
+                    <!-- Tags Selection -->
+                    <div class="mb-4">
+                        <label class="form-label fw-bold fs-5">What aspects did you enjoy?</label>
+                        <div class="d-flex flex-wrap gap-2 mt-2">
+                            <button type="button" class="filter-btn tag-btn" data-tag="Service">Service</button>
+                            <button type="button" class="filter-btn tag-btn" data-tag="Quality">Quality</button>
+                            <button type="button" class="filter-btn tag-btn" data-tag="Value">Value</button>
+                            <button type="button" class="filter-btn tag-btn" data-tag="Speed">Speed</button>
+                            <button type="button" class="filter-btn tag-btn" data-tag="Experience">Experience</button>
+                            <button type="button" class="filter-btn tag-btn" data-tag="Support">Support</button>
+                        </div>
+                        <input type="hidden" name="tags" id="selectedTags">
+                    </div>
+                  
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary btn-lg px-5">
+                            <i class="bi bi-send-fill me-2"></i>Submit Review
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+       
+        
+        <!-- Reviews Section -->
+        <section class="reviews-section mb-5">
+            <h2 class="mb-4"><i class="bi bi-chat-square-heart me-2"></i>Recent Reviews</h2>
+            
+            <!-- Search and Filters -->
+            <div class="row mb-4">
+                <div class="col-md-8">
+                    <div class="search-box">
+                        <i class="bi bi-search"></i>
+                        <input type="text" id="searchReviews" placeholder="Search reviews..." class="form-control">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <select class="form-select" id="sortOptions">
+                        <option value="newest">Newest First</option>
+                        <option value="oldest">Oldest First</option>
+                        <option value="highest">Highest Rating</option>
+                        <option value="lowest">Lowest Rating</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="filters mb-4">
+                <button class="filter-btn active" data-filter="all">All Reviews</button>
+                <button class="filter-btn" data-filter="5">5 Star</button>
+                <button class="filter-btn" data-filter="4">4 Star</button>
+                <button class="filter-btn" data-filter="3">3 Star</button>
+                <button class="filter-btn" data-filter="2">2 Star</button>
+                <button class="filter-btn" data-filter="1">1 Star</button>
+            </div>
+            
+            <!-- Reviews Container -->
+            <div class="reviews-container">
+                <!-- Sample Review 1 -->
+                <div class="review-card" data-rating="5">
+                    <div class="review-header">
+                        <div class="user-avatar">JD</div>
+                        <div>
+                            <h5 class="mb-0">User</h5>
+                            <div class="star-display">
+                                <i class="bi bi-star-fill star-filled"></i>
+                                <i class="bi bi-star-fill star-filled"></i>
+                                <i class="bi bi-star-fill star-filled"></i>
+                                <i class="bi bi-star-fill star-filled"></i>
+                                <i class="bi bi-star-fill star-filled"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review-content">
+                        <p>Absolutely amazing experience! The service was impeccable and everything exceeded my expectations. I would highly recommend to anyone looking for quality and excellence.</p>
+                        <div class="mt-2">
+                            <span class="feedback-tag">Service</span>
+                            <span class="feedback-tag">Quality</span>
+                        </div>
+                    </div>
+                    <div class="review-footer">
+                        <div>March 10, 2025</div>
+                    </div>
+                </div>
+                
+                <!-- Sample Review 2 -->
+                <div class="review-card" data-rating="4">
+                    <div class="review-header">
+                        <div class="user-avatar">SM</div>
+                        <div>
+                            <h5 class="mb-0">User</h5>
+                            <div class="star-display">
+                                <i class="bi bi-star-fill star-filled"></i>
+                                <i class="bi bi-star-fill star-filled"></i>
+                                <i class="bi bi-star-fill star-filled"></i>
+                                <i class="bi bi-star-fill star-filled"></i>
+                                <i class="bi bi-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review-content">
+                        <p>Great overall experience. The quality was top-notch and I really appreciated the fast response from the support team. Just a minor issue with the delivery time, but everything else was perfect!</p>
+                        <div class="mt-2">
+                            <span class="feedback-tag">Value</span>
+                            <span class="feedback-tag">Support</span>
+                        </div>
+                    </div>
+                    <div class="review-footer">
+                        <div>March 8, 2025</div>
+                    </div>
+                </div>
+
+                <!-- Sample Review 3 -->
+                <div class="review-card" data-rating="5">
+                    <div class="review-header">
+                        <div class="user-avatar">AT</div>
+                        <div>
+                            <h5 class="mb-0">User</h5>
+                            <div class="star-display">
+                                <i class="bi bi-star-fill star-filled"></i>
+                                <i class="bi bi-star-fill star-filled"></i>
+                                <i class="bi bi-star-fill star-filled"></i>
+                                <i class="bi bi-star-fill star-filled"></i>
+                                <i class="bi bi-star-fill star-filled"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review-content">
+                        <p>I can't say enough good things about my experience! The staff was friendly and attentive, and the quality of service was outstanding. Will definitely be coming back again and again.</p>
+                        <div class="mt-2">
+                            <span class="feedback-tag">Service</span>
+                            <span class="feedback-tag">Experience</span>
+                        </div>
+                    </div>
+                    <div class="review-footer">
+                        <div>March 5, 2025</div>
+                    </div>
+                </div>
+
+                <!-- Sample Review 4 -->
+                <div class="review-card" data-rating="3">
+                    <div class="review-header">
+                        <div class="user-avatar">RJ</div>
+                        <div>
+                            <h5 class="mb-0">User</h5>
+                            <div class="star-display">
+                                <i class="bi bi-star-fill star-filled"></i>
+                                <i class="bi bi-star-fill star-filled"></i>
+                                <i class="bi bi-star-fill star-filled"></i>
+                                <i class="bi bi-star"></i>
+                                <i class="bi bi-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review-content">
+                        <p>The product was okay, but the delivery took longer than expected. Customer service was helpful in resolving my concerns though, which I appreciated.</p>
+                        <div class="mt-2">
+                            <span class="feedback-tag">Support</span>
+                        </div>
+                    </div>
+                    <div class="review-footer">
+                        <div>March 3, 2025</div>
+                    </div>
+                </div>
+
+                <!-- Sample Review 5 -->
+                <div class="review-card" data-rating="5">
+                    <div class="review-header">
+                        <div class="user-avatar">KL</div>
+                        <div>
+                            <h5 class="mb-0">User</h5>
+                            <div class="star-display">
+                                <i class="bi bi-star-fill star-filled"></i>
+                                <i class="bi bi-star-fill star-filled"></i>
+                                <i class="bi bi-star-fill star-filled"></i>
+                                <i class="bi bi-star-fill star-filled"></i>
+                                <i class="bi bi-star-fill star-filled"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review-content">
+                        <p>Fantastic experience from start to finish! The website was easy to navigate, checkout was smooth, and delivery was faster than I expected. The quality of the product is exceptional.</p>
+                        <div class="mt-2">
+                            <span class="feedback-tag">Speed</span>
+                            <span class="feedback-tag">Quality</span>
+                        </div>
+                    </div>
+                    <div class="review-footer">
+                        <div>March 1, 2025</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pagination -->
+            <div class="pagination-container">
+                <div class="pagination">
+                    <button class="page-btn active">1</button>
+                    <button class="page-btn">2</button>
+                    <button class="page-btn">3</button>
+                    <button class="page-btn">4</button>
+                    <button class="page-btn"><i class="bi bi-chevron-right"></i></button>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <!-- Bootstrap 5 JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script>
+        // Store review data
+        const reviewData = {
+    ratings: {
+        1: 1,    // 1 star: 1 review
+        2: 5,    // 2 stars: 5 reviews
+        3: 10,   // 3 stars: 10 reviews
+        4: 41,   // 4 stars: 41 reviews
+        5: 199,  // 5 stars: 199 reviews
+    },
+    totalReviews: 256, // Total number of reviews
+    averageRating: 4.7 // Average rating across all reviews
+};
+
+        // Character counter for review text
+        document.getElementById('reviewText').addEventListener('input', function() {
+            const currentLength = this.value.length;
+            document.getElementById('charCount').textContent = `${currentLength}/500`;
+        });
+
+        // Star rating behavior
+        const starLabels = document.querySelectorAll('.star-rating label');
+        const ratingText = document.getElementById('ratingText');
+        const ratingMessages = [
+            "Poor - Not recommended",
+            "Fair - Below expectations",
+            "Good - Met expectations",
+            "Great - Above expectations",
+            "Excellent - Highly recommended"
+        ];
+
+        document.querySelectorAll('.star-rating input').forEach((input, index) => {
+            input.addEventListener('change', function() {
+                const ratingValue = this.value;
+                ratingText.textContent = ratingMessages[ratingValue - 1];
+            });
+        });
+
+        // Tag selection
+        const tagButtons = document.querySelectorAll('.tag-btn');
+        const selectedTagsInput = document.getElementById('selectedTags');
+        let selectedTags = [];
+
+        tagButtons.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const tag = this.dataset.tag;
+                
+                if (this.classList.contains('active')) {
+                    // Remove tag
+                    this.classList.remove('active');
+                    selectedTags = selectedTags.filter(item => item !== tag);
+                } else {
+                    // Add tag
+                    this.classList.add('active');
+                    selectedTags.push(tag);
+                }
+                
+                // Update hidden input
+                selectedTagsInput.value = selectedTags.join(',');
+            });
+        });
+
+        // Rating form submission
+        document.getElementById('ratingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show loading spinner
+            document.getElementById('loadingSpinner').style.display = 'flex';
+            
+            // Simulate form submission
+            setTimeout(() => {
+                // Hide spinner
+                document.getElementById('loadingSpinner').style.display = 'none';
+                
+                // Show success message and trigger confetti
+                alert('Thank you for your feedback!');
+                
+                // Reset form
+                this.reset();
+                ratingText.textContent = 'Select a rating';
+                document.getElementById('charCount').textContent = '0/500';
+                tagButtons.forEach(btn => btn.classList.remove('active'));
+                selectedTags = [];
+                selectedTagsInput.value = '';
+                
+                // Trigger confetti animation
+                startConfetti();
+            }, 1500);
+        });
+
+        // Filter reviews
+        const filterButtons = document.querySelectorAll('.filters .filter-btn');
+        const reviewCards = document.querySelectorAll('.review-card');
+        
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Update active button
+                filterButtons.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                const filter = this.dataset.filter;
+                
+                // Show/hide reviews based on filter
+                reviewCards.forEach(card => {
+                    if (filter === 'all' || card.dataset.rating === filter) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Search functionality
+        document.getElementById('searchReviews').addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            
+            reviewCards.forEach(card => {
+                const content = card.querySelector('.review-content').textContent.toLowerCase();
+                
+                if (content.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+
+        // Sort reviews
+        document.getElementById('sortOptions').addEventListener('change', function() {
+            const sortOption = this.value;
+            const reviewsContainer = document.querySelector('.reviews-container');
+            const reviews = Array.from(reviewCards);
+            
+            reviews.sort((a, b) => {
+                const ratingA = parseInt(a.dataset.rating);
+                const ratingB = parseInt(b.dataset.rating);
+                const dateA = new Date(a.querySelector('.review-footer div').textContent);
+                const dateB = new Date(b.querySelector('.review-footer div').textContent);
+                
+                switch (sortOption) {
+                    case 'newest':
+                        return dateB - dateA;
+                    case 'oldest':
+                        return dateA - dateB;
+                    case 'highest':
+                        return ratingB - ratingA;
+                    case 'lowest':
+                        return ratingA - ratingB;
+                    default:
+                        return 0;
+                }
+            });
+            
+            // Re-append sorted reviews
+            reviews.forEach(review => {
+                reviewsContainer.appendChild(review);
+            });
+        });
+
+        // Pagination
+        const pageButtons = document.querySelectorAll('.page-btn');
+        
+        pageButtons.forEach(btn => {
+            btn.addEventListener('click', function() {
+                pageButtons.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Simulating page change - would normally load different reviews
+                window.scrollTo({
+                    top: document.querySelector('.reviews-section').offsetTop - 100,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Confetti animation
+        function startConfetti() {
+            const canvas = document.getElementById('confetti-canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            
+            const confetti = [];
+            const colors = ['#f8a5c2', '#c3aed6', '#a6dcef', '#ffd166', '#70d6ff'];
+            
+            // Create confetti particles
+            for (let i = 0; i < 200; i++) {
+                confetti.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height - canvas.height,
+                    size: Math.random() * 10 + 5,
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    speed: Math.random() * 3 + 2,
+                    angle: Math.random() * 6.28,
+                    spin: Math.random() * 0.2 - 0.1
+                });
+            }
+            
+            // Animate confetti
+            let active = true;
+            function animate() {
+                if (!active) return;
+                
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                let stillActive = false;
+                confetti.forEach(particle => {
+                    particle.y += particle.speed;
+                    particle.angle += particle.spin;
+                    
+                    ctx.save();
+                    ctx.translate(particle.x, particle.y);
+                    ctx.rotate(particle.angle);
+                    ctx.fillStyle = particle.color;
+                    ctx.fillRect(-particle.size/2, -particle.size/2, particle.size, particle.size);
+                    ctx.restore();
+                    
+                    if (particle.y < canvas.height) {
+                        stillActive = true;
+                    }
+                });
+                
+                if (stillActive) {
+                    requestAnimationFrame(animate);
+                } else {
+                    active = false;
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                }
+            }
+            
+            animate();
+        }
+
+        // Initialize emoji rating styles
+        document.querySelector('.emoji-rating').innerHTML = `
+            <div class="d-flex justify-content-between mt-3" style="max-width: 500px; margin: 0 auto;">
+                <div class="emoji-option text-center">
+                    <input type="radio" name="emoji-rating" id="emoji1" value="1" class="d-none">
+                    <label for="emoji1" class="d-block mb-2" style="font-size: 2.5rem; cursor: pointer;">😡</label>
+                    <div>Terrible</div>
+                </div>
+                <div class="emoji-option text-center">
+                    <input type="radio" name="emoji-rating" id="emoji2" value="2" class="d-none">
+                    <label for="emoji2" class="d-block mb-2" style="font-size: 2.5rem; cursor: pointer;">😕</label>
+                    <div>Poor</div>
+                </div>
+                <div class="emoji-option text-center">
+                    <input type="radio" name="emoji-rating" id="emoji3" value="3" class="d-none">
+                    <label for="emoji3" class="d-block mb-2" style="font-size: 2.5rem; cursor: pointer;">😐</label>
+                    <div>Okay</div>
+                </div>
+                <div class="emoji-option text-center">
+                    <input type="radio" name="emoji-rating" id="emoji4" value="4" class="d-none">
+                    <label for="emoji4" class="d-block mb-2" style="font-size: 2.5rem; cursor: pointer;">😊</label>
+                    <div>Good</div>
+                </div>
+                <div class="emoji-option text-center">
+                    <input type="radio" name="emoji-rating" id="emoji5" value="5" class="d-none">
+                    <label for="emoji5" class="d-block mb-2" style="font-size: 2.5rem; cursor: pointer;">😍</label>
+                    <div>Amazing</div>
+                </div>
+            </div>
+        `;
+
+        // Add hover effect to emoji options
+        document.querySelectorAll('.emoji-option label').forEach(label => {
+            label.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.2)';
+            });
+            
+            label.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+            });
+        });
+
+        // Handle emoji selection
+        document.querySelectorAll('.emoji-option input').forEach(input => {
+            input.addEventListener('change', function() {
+                document.querySelectorAll('.emoji-option label').forEach(l => {
+                    l.style.transform = 'scale(1)';
+                    l.style.opacity = '0.5';
+                });
+                
+                const selectedLabel = document.querySelector(`label[for="${this.id}"]`);
+                selectedLabel.style.transform = 'scale(1.2)';
+                selectedLabel.style.opacity = '1';
+                
+                // Set matching star rating
+                document.getElementById(`star${this.value}`).checked = true;
+                ratingText.textContent = ratingMessages[this.value - 1];
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wardrobe List</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Wardrobe List (Ordered by Dress Type)</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Dress</th>
+                <th>Model Name</th>
+                <th>Dress Type</th>
+                <th>Gender</th>
+                <th>Date Added</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for wardrobe in wardrobes %}
+            <tr>
+                <td>{{ wardrobe.Name }}</td>
+                <td><a href="{{ wardrobe.Dress.url }}" target="_blank">View Dress</a></td>
+                <td>{{ wardrobe.model_name }}</td>
+                <td>{{ wardrobe.dress_type }}</td>
+                <td>{{ wardrobe.gendertype }}</td>
+                <td>{{ wardrobe.date }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>

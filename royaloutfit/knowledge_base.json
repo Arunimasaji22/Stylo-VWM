@@ -1,0 +1,1295 @@
+{
+  "questions": [
+    {
+      "question": "hello",
+      "answer": "hi how can i help you"
+    },
+    {
+      "question": "what is your name",
+      "answer": "my name is robo 2.0 ...... what is your name..?"
+    },
+    {
+      "question": "hi",
+      "answer": "hello"
+    },
+    {
+      "question": "any suggesstions?",
+      "answer": "how can i help you"
+    },
+    {
+      "question": "",
+      "answer": "exit"
+    },
+    {
+      "question": "",
+      "answer": ""
+    }
+   
+
+
+,
+    
+        {
+          "question": "hello",
+          "answer": "hi how can i help you"
+        },
+        {
+          "question": "what is your name",
+          "answer": "my name is robo 2.0 ...... what is your name..?"
+        },
+        {
+          "question": "hi",
+          "answer": "hello"
+        },
+        {
+          "question": "any suggesstions?",
+          "answer": "how can i help you"
+        },
+            {
+              "question": "What are the top fashion trends this season?",
+              "answer": "This season, oversized blazers, bold colors, and statement accessories are in!"
+            },
+            {
+              "question": "How can I style a white t-shirt?",
+              "answer": "Pair it with high-waisted jeans, a leather jacket, and some sneakers for a classic look!"
+            },
+            {
+              "question": "What colors are trending in fashion right now?",
+              "answer": "Earthy tones like sage green, rust, and beige are super trendy!"
+            },
+            {
+              "question": "How do I accessorize a little black dress?",
+              "answer": "Go for statement earrings, a sleek clutch, and heels to elevate your look."
+            },
+            {
+              "question": "Can I wear sneakers with a dress?",
+              "answer": "Absolutely! Sneakers with a flowy dress create a chic and comfy look."
+            },
+            {
+              "question": "What are some must-have wardrobe essentials?",
+              "answer": "A white shirt, denim jeans, black blazer, and versatile sneakers are essentials."
+            },
+            {
+              "question": "How do I dress stylishly on a budget?",
+              "answer": "Shop second-hand, invest in basics, and mix and match pieces creatively!"
+            },
+            {
+              "question": "What type of jeans suit my body shape?",
+              "answer": "For hourglass, go for high-waisted; for pear, try bootcut; for petite, skinny works well."
+            },
+            {
+              "question": "Are crop tops still in style?",
+              "answer": "Yes! Pair them with high-waisted pants or skirts for a balanced look."
+            },
+            {
+              "question": "What’s a good outfit for a date night?",
+              "answer": "A fitted dress with heels or a chic jumpsuit is a great choice!"
+            },
+            {
+              "question": "How do I layer clothes stylishly?",
+              "answer": "Start with a basic tee, add a sweater, then a coat for a trendy layered look."
+            },
+            {
+              "question": "What’s the best way to wear a scarf?",
+              "answer": "Try draping it loosely over your shoulders or wrapping it around your neck for warmth."
+            },
+            {
+              "question": "How can I make an outfit look expensive?",
+              "answer": "Stick to neutral colors, structured silhouettes, and polished accessories."
+            },
+            {
+              "question": "Are mom jeans still trendy?",
+              "answer": "Yes! Mom jeans paired with crop tops or oversized sweaters are a staple."
+            },
+            {
+              "question": "What’s a simple way to elevate a casual outfit?",
+              "answer": "Add statement jewelry, a structured blazer, or a chic handbag."
+            },
+            {
+              "question": "Can I wear white after Labor Day?",
+              "answer": "Of course! Fashion rules are meant to be broken—wear what makes you happy."
+            },
+            {
+              "question": "What’s the best way to style knee-high boots?",
+              "answer": "Pair them with a mini dress or skinny jeans for a sleek look."
+            },
+            {
+              "question": "Are oversized clothes fashionable?",
+              "answer": "Yes! Oversized blazers, sweaters, and shirts are trending. Just balance with fitted bottoms."
+            },
+            {
+              "question": "What’s a must-have handbag for every woman?",
+              "answer": "A classic black crossbody or a structured tote bag is essential."
+            },
+            {
+              "question": "How can I mix patterns in an outfit?",
+              "answer": "Start with similar color schemes and balance bold patterns with subtle prints."
+            }
+         ,
+    
+        
+            {
+              "question": "What are the top fashion trends this year?",
+              "answer": "Oversized blazers, monochrome outfits, and statement accessories are trending."
+            },
+            {
+              "question": "How can I style a basic white T-shirt?",
+              "answer": "Pair it with high-waisted jeans, sneakers, and layered necklaces for a chic look."
+            },
+            {
+              "question": "What should I wear to a formal dinner?",
+              "answer": "A sleek black dress with heels or a tailored suit would be perfect."
+            },
+            {
+              "question": "How do I mix and match patterns?",
+              "answer": "Stick to the same color family and mix patterns of different scales."
+            },
+            {
+              "question": "Can I wear sneakers with a dress?",
+              "answer": "Yes! Sneakers with a flowy dress create a stylish and comfortable look."
+            },
+            {
+              "question": "What are the best colors for a summer outfit?",
+              "answer": "Pastels, whites, and bright colors like yellow and coral are great for summer."
+            },
+            {
+              "question": "How can I accessorize a simple outfit?",
+              "answer": "Add statement earrings, a stylish handbag, and layered necklaces."
+            },
+            {
+              "question": "What is a good casual outfit for winter?",
+              "answer": "A cozy sweater, jeans, ankle boots, and a long coat."
+            },
+            {
+              "question": "How do I choose the right color combination for an outfit?",
+              "answer": "Use the color wheel; complementary colors like blue and orange work well."
+            },
+            {
+              "question": "Is it okay to wear black and navy together?",
+              "answer": "Yes! It creates a sophisticated and modern look."
+            },
+            {
+              "question": "What are the best color combinations for office wear?",
+              "answer": "Navy and white, black and beige, or gray and soft pink work well."
+            },
+            {
+              "question": "How can I style an all-black outfit?",
+              "answer": "Mix different textures and add accessories like gold jewelry for contrast."
+            },
+            {
+              "question": "What colors go well with red?",
+              "answer": "Red pairs well with neutrals like white, black, beige, or denim."
+            },
+            {
+              "question": "What are the best colors to wear in fall?",
+              "answer": "Earthy tones like brown, rust, mustard, and olive green are great for fall."
+            },
+            {
+              "question": "How do I style a denim jacket?",
+              "answer": "Wear it over a dress or pair it with a T-shirt and joggers for a casual look."
+            },
+            {
+              "question": "What shoes go well with a maxi dress?",
+              "answer": "Sandals for summer, ankle boots for fall, and sneakers for a casual look."
+            },
+            {
+              "question": "How can I make my outfit look more expensive?",
+              "answer": "Focus on fit, add structured pieces, and wear classic accessories."
+            },
+            {
+              "question": "What colors go well with green?",
+              "answer": "Green pairs well with beige, white, navy, and even pink for contrast."
+            },
+            {
+              "question": "Can I wear gold and silver jewelry together?",
+              "answer": "Yes! Mixing metals is trendy and adds dimension to your look."
+            },
+            {
+              "question": "How do I wear a monochrome outfit?",
+              "answer": "Choose different shades of the same color and mix textures."
+            },
+            {
+              "question": "What colors make you look slimmer?",
+              "answer": "Dark colors like black, navy, and deep green have a slimming effect."
+            },
+            {
+              "question": "How do I match my shoes with my outfit?",
+              "answer": "Neutral shoes work with everything, while bold shoes can be a statement piece."
+            },
+            {
+              "question": "What are the best color combinations for spring?",
+              "answer": "Lavender and white, pastel pink and mint green, or yellow and blue."
+            },
+            {
+              "question": "How do I style an oversized sweater?",
+              "answer": "Pair it with skinny jeans or leggings for a balanced silhouette."
+            },
+            {
+              "question": "What color goes best with yellow?",
+              "answer": "Navy, white, gray, and even deep green complement yellow well."
+            },
+            {
+              "question": "How do I dress up a casual outfit?",
+              "answer": "Add heels, structured outerwear, and statement accessories."
+            },
+            {
+              "question": "What color looks good on everyone?",
+              "answer": "Navy blue, teal, and burgundy tend to be universally flattering."
+            },
+            {
+              "question": "How do I wear bright colors without looking too bold?",
+              "answer": "Pair one bright piece with neutral tones for balance."
+            },
+            {
+              "question": "Can I mix brown and black?",
+              "answer": "Yes! It creates a chic, sophisticated contrast when styled correctly."
+            },
+            {
+              "question": "What are the best colors for a wedding guest outfit?",
+              "answer": "Soft pastels, jewel tones, or classic navy are great choices."
+            }
+         ,
+        
+         
+            {
+              "question": "How can I style a casual outfit for a day out?",
+              "answer": "Pair high-waisted jeans with a cropped top and white sneakers for a relaxed yet stylish look."
+            },
+            {
+              "question": "What are the trending colors this season?",
+              "answer": "Earthy tones like olive green, burnt orange, and deep brown are trending this season."
+            },
+            {
+              "question": "How do I make a monochrome outfit look stylish?",
+              "answer": "Mix different shades and textures of the same color to add depth and interest."
+            },
+            {
+              "question": "What colors go well with navy blue?",
+              "answer": "Navy blue pairs well with white, beige, mustard yellow, and blush pink."
+            },
+            {
+              "question": "Can I wear black and brown together?",
+              "answer": "Absolutely! Just ensure there's a balance, like a black blazer over a brown dress with neutral accessories."
+            },
+            {
+              "question": "What’s a timeless outfit combination?",
+              "answer": "A white button-down shirt with blue jeans and classic loafers never goes out of style."
+            },
+            {
+              "question": "How can I layer clothes for a chic look?",
+              "answer": "Start with a base layer, add a stylish cardigan or blazer, and finish with a structured coat."
+            },
+            {
+              "question": "How do I match patterns in an outfit?",
+              "answer": "Stick to the same color family and mix patterns of different sizes for a balanced look."
+            },
+            {
+              "question": "What’s a good outfit for a first date?",
+              "answer": "Go for a well-fitted dress with minimal accessories and comfortable heels or stylish flats."
+            },
+            {
+              "question": "How do I pick the right accessories for my outfit?",
+              "answer": "If your outfit is simple, go for statement accessories; if it’s bold, keep accessories minimal."
+            },
+            {
+              "question": "What colors make me look slimmer?",
+              "answer": "Darker shades like black, navy, and deep burgundy create a slimming effect."
+            },
+            {
+              "question": "How can I add a pop of color to a neutral outfit?",
+              "answer": "Use bright accessories like a red bag, statement earrings, or colorful shoes."
+            },
+            {
+              "question": "How can I dress fashionably on a budget?",
+              "answer": "Invest in classic basics, shop at thrift stores, and mix high and low fashion pieces."
+            },
+            {
+              "question": "What’s a stylish yet comfortable airport outfit?",
+              "answer": "A pair of joggers, a loose tee, and a denim jacket with sneakers make a perfect travel outfit."
+            },
+            {
+              "question": "Can I mix gold and silver jewelry?",
+              "answer": "Yes! Layering gold and silver accessories can create a trendy, mixed-metal look."
+            },
+            {
+              "question": "How do I style pastel colors?",
+              "answer": "Pair pastels with neutrals or other pastel shades for a soft and elegant look."
+            },
+            {
+              "question": "What’s the best way to wear a blazer casually?",
+              "answer": "Throw a blazer over a basic tee and jeans, then complete the look with sneakers or loafers."
+            },
+            {
+              "question": "What’s a good color combination for a professional look?",
+              "answer": "Navy and white, black and beige, or grey and burgundy are great professional combos."
+            },
+            {
+              "question": "How do I style an oversized shirt?",
+              "answer": "Tuck it into high-waisted jeans or wear it as a dress with a belt for structure."
+            },
+            {
+              "question": "How do I mix casual and formal pieces?",
+              "answer": "Pair tailored trousers with a casual tee or a structured blazer with ripped jeans."
+            },
+            {
+              "question": "What are some classic fashion do’s and don’ts?",
+              "answer": "Do invest in timeless pieces; don’t follow every trend blindly."
+            },
+            {
+              "question": "What colors make an outfit look expensive?",
+              "answer": "Neutrals like beige, camel, and white create a luxurious and polished look."
+            },
+            {
+              "question": "What’s a good color combination for summer outfits?",
+              "answer": "Bright and fresh colors like coral, turquoise, and lemon yellow work well."
+            },
+            {
+              "question": "How can I dress like a fashion influencer?",
+              "answer": "Experiment with trends, mix high and low pieces, and always accessorize strategically."
+            },
+            {
+              "question": "How do I style a bold print dress?",
+              "answer": "Keep accessories minimal and opt for neutral-colored shoes and bags."
+            },
+            {
+              "question": "How can I pull off a streetwear look?",
+              "answer": "Go for oversized hoodies, cargo pants, chunky sneakers, and layered accessories."
+            },
+            {
+              "question": "What’s the best way to style white sneakers?",
+              "answer": "Pair them with anything from jeans and a tee to a sundress for a fresh look."
+            },
+            {
+              "question": "What are some power color combinations?",
+              "answer": "Red and black, royal blue and gold, or emerald green and white make bold statements."
+            },
+            {
+              "question": "How do I layer jewelry like a fashion influencer?",
+              "answer": "Start with delicate pieces and gradually add statement items for a curated look."
+            }
+         ,
+        
+        {
+          "question": "",
+          "answer": "exit"
+        },
+        {
+          "question": "",
+          "answer": ""
+        }
+    
+    
+       ,
+            {
+              "question": "What’s trending in fashion right now?",
+              "answer": "Oversized blazers, monochrome outfits, and vintage-inspired accessories are trending!"
+            },
+            {
+              "question": "How can I style a basic white t-shirt?",
+              "answer": "Pair it with high-waisted jeans, a statement belt, and sneakers for a casual look!"
+            },
+            {
+              "question": "What accessories go best with a little black dress?",
+              "answer": "Gold or silver jewelry, a clutch, and classic heels always elevate an LBD!"
+            },
+            {
+              "question": "What’s trending in fashion right now?",
+              "answer": "Oversized blazers, monochrome outfits, and vintage-inspired accessories are trending!"
+            },
+            {
+              "question": "How can I style a basic white t-shirt?",
+              "answer": "Pair it with high-waisted jeans, a statement belt, and sneakers for a casual look!"
+            },
+            {
+              "question": "What accessories go best with a little black dress?",
+              "answer": "Gold or silver jewelry, a clutch, and classic heels always elevate an LBD!"
+            },
+            {
+              "question": "What’s trending in fashion right now?",
+              "answer": "Oversized blazers, monochrome outfits, and vintage-inspired accessories are trending!"
+            },
+            {
+              "question": "How can I style a basic white t-shirt?",
+              "answer": "Pair it with high-waisted jeans, a statement belt, and sneakers for a casual look!"
+            },
+            {
+              "question": "What accessories go best with a little black dress?",
+              "answer": "Gold or silver jewelry, a clutch, and classic heels always elevate an LBD!"
+            },
+            {
+              "question": "What’s trending in fashion right now?",
+              "answer": "Oversized blazers, monochrome outfits, and vintage-inspired accessories are trending!"
+            },
+            {
+              "question": "How can I style a basic white t-shirt?",
+              "answer": "Pair it with high-waisted jeans, a statement belt, and sneakers for a casual look!"
+            },
+            {
+              "question": "What accessories go best with a little black dress?",
+              "answer": "Gold or silver jewelry, a clutch, and classic heels always elevate an LBD!"
+            },
+            {
+              "question": "What’s trending in fashion right now?",
+              "answer": "Oversized blazers, monochrome outfits, and vintage-inspired accessories are trending!"
+            },
+            {
+              "question": "How can I style a basic white t-shirt?",
+              "answer": "Pair it with high-waisted jeans, a statement belt, and sneakers for a casual look!"
+            },
+            {
+              "question": "What accessories go best with a little black dress?",
+              "answer": "Gold or silver jewelry, a clutch, and classic heels always elevate an LBD!"
+            },
+            {
+              "question": "What’s trending in fashion right now?",
+              "answer": "Oversized blazers, monochrome outfits, and vintage-inspired accessories are trending!"
+            },
+            {
+              "question": "How can I style a basic white t-shirt?",
+              "answer": "Pair it with high-waisted jeans, a statement belt, and sneakers for a casual look!"
+            },
+            {
+              "question": "What accessories go best with a little black dress?",
+              "answer": "Gold or silver jewelry, a clutch, and classic heels always elevate an LBD!"
+            },
+            {
+              "question": "What’s trending in fashion right now?",
+              "answer": "Oversized blazers, monochrome outfits, and vintage-inspired accessories are trending!"
+            },
+            {
+              "question": "How can I style a basic white t-shirt?",
+              "answer": "Pair it with high-waisted jeans, a statement belt, and sneakers for a casual look!"
+            },
+            {
+              "question": "What accessories go best with a little black dress?",
+              "answer": "Gold or silver jewelry, a clutch, and classic heels always elevate an LBD!"
+            },
+            {
+              "question": "What’s trending in fashion right now?",
+              "answer": "Oversized blazers, monochrome outfits, and vintage-inspired accessories are trending!"
+            },
+            {
+              "question": "How can I style a basic white t-shirt?",
+              "answer": "Pair it with high-waisted jeans, a statement belt, and sneakers for a casual look!"
+            },
+            {
+              "question": "What accessories go best with a little black dress?",
+              "answer": "Gold or silver jewelry, a clutch, and classic heels always elevate an LBD!"
+            },
+            {
+              "question": "What’s trending in fashion right now?",
+              "answer": "Oversized blazers, monochrome outfits, and vintage-inspired accessories are trending!"
+            },
+            {
+              "question": "How can I style a basic white t-shirt?",
+              "answer": "Pair it with high-waisted jeans, a statement belt, and sneakers for a casual look!"
+            },
+            {
+              "question": "What accessories go best with a little black dress?",
+              "answer": "Gold or silver jewelry, a clutch, and classic heels always elevate an LBD!"
+            },
+            {
+              "question": "What’s trending in fashion right now?",
+              "answer": "Oversized blazers, monochrome outfits, and vintage-inspired accessories are trending!"
+            },
+            {
+              "question": "How can I style a basic white t-shirt?",
+              "answer": "Pair it with high-waisted jeans, a statement belt, and sneakers for a casual look!"
+            },
+            {
+              "question": "What accessories go best with a little black dress?",
+              "answer": "Gold or silver jewelry, a clutch, and classic heels always elevate an LBD!"
+            },
+            {
+              "question": "What’s trending in fashion right now?",
+              "answer": "Oversized blazers, monochrome outfits, and vintage-inspired accessories are trending!"
+            },
+            {
+              "question": "How can I style a basic white t-shirt?",
+              "answer": "Pair it with high-waisted jeans, a statement belt, and sneakers for a casual look!"
+            },
+            {
+              "question": "What accessories go best with a little black dress?",
+              "answer": "Gold or silver jewelry, a clutch, and classic heels always elevate an LBD!"
+            },
+            {
+              "question": "What’s trending in fashion right now?",
+              "answer": "Oversized blazers, monochrome outfits, and vintage-inspired accessories are trending!"
+            },
+            {
+              "question": "How can I style a basic white t-shirt?",
+              "answer": "Pair it with high-waisted jeans, a statement belt, and sneakers for a casual look!"
+            },
+            {
+              "question": "What accessories go best with a little black dress?",
+              "answer": "Gold or silver jewelry, a clutch, and classic heels always elevate an LBD!"
+            },
+            {
+              "question": "What’s trending in fashion right now?",
+              "answer": "Oversized blazers, monochrome outfits, and vintage-inspired accessories are trending!"
+            },
+            {
+              "question": "How can I style a basic white t-shirt?",
+              "answer": "Pair it with high-waisted jeans, a statement belt, and sneakers for a casual look!"
+            },
+            {
+              "question": "What accessories go best with a little black dress?",
+              "answer": "Gold or silver jewelry, a clutch, and classic heels always elevate an LBD!"
+            },
+            {
+              "question": "What’s trending in fashion right now?",
+              "answer": "Oversized blazers, monochrome outfits, and vintage-inspired accessories are trending!"
+            },
+            {
+              "question": "How can I style a basic white t-shirt?",
+              "answer": "Pair it with high-waisted jeans, a statement belt, and sneakers for a casual look!"
+            },
+            {
+              "question": "What accessories go best with a little black dress?",
+              "answer": "Gold or silver jewelry, a clutch, and classic heels always elevate an LBD!"
+            },
+            {
+              "question": "What’s trending in fashion right now?",
+              "answer": "Oversized blazers, monochrome outfits, and vintage-inspired accessories are trending!"
+            },
+            {
+              "question": "How can I style a basic white t-shirt?",
+              "answer": "Pair it with high-waisted jeans, a statement belt, and sneakers for a casual look!"
+            },
+            {
+              "question": "What accessories go best with a little black dress?",
+              "answer": "Gold or silver jewelry, a clutch, and classic heels always elevate an LBD!"
+            },
+            {
+              "question": "What’s trending in fashion right now?",
+              "answer": "Oversized blazers, monochrome outfits, and vintage-inspired accessories are trending!"
+            },
+            {
+              "question": "How can I style a basic white t-shirt?",
+              "answer": "Pair it with high-waisted jeans, a statement belt, and sneakers for a casual look!"
+            },
+            {
+              "question": "What accessories go best with a little black dress?",
+              "answer": "Gold or silver jewelry, a clutch, and classic heels always elevate an LBD!"
+            },
+            {
+              "question": "What’s trending in fashion right now?",
+              "answer": "Oversized blazers, monochrome outfits, and vintage-inspired accessories are trending!"
+            },
+            {
+              "question": "How can I style a basic white t-shirt?",
+              "answer": "Pair it with high-waisted jeans, a statement belt, and sneakers for a casual look!"
+            },
+            {
+              "question": "What accessories go best with a little black dress?",
+              "answer": "Gold or silver jewelry, a clutch, and classic heels always elevate an LBD!"
+            },
+            {
+              "question": "What’s trending in fashion right now?",
+              "answer": "Oversized blazers, monochrome outfits, and vintage-inspired accessories are trending!"
+            },
+            {
+              "question": "How can I style a basic white t-shirt?",
+              "answer": "Pair it with high-waisted jeans, a statement belt, and sneakers for a casual look!"
+            },
+            {
+              "question": "What accessories go best with a little black dress?",
+              "answer": "Gold or silver jewelry, a clutch, and classic heels always elevate an LBD!"
+            },
+            {
+              "question": "What’s trending in fashion right now?",
+              "answer": "Oversized blazers, monochrome outfits, and vintage-inspired accessories are trending!"
+            },
+            {
+              "question": "How can I style a basic white t-shirt?",
+              "answer": "Pair it with high-waisted jeans, a statement belt, and sneakers for a casual look!"
+            },
+            {
+              "question": "What accessories go best with a little black dress?",
+              "answer": "Gold or silver jewelry, a clutch, and classic heels always elevate an LBD!"
+            },
+            {
+              "question": "What’s trending in fashion right now?",
+              "answer": "Oversized blazers, monochrome outfits, and vintage-inspired accessories are trending!"
+            },
+            {
+              "question": "How can I style a basic white t-shirt?",
+              "answer": "Pair it with high-waisted jeans, a statement belt, and sneakers for a casual look!"
+            },
+            {
+              "question": "What accessories go best with a little black dress?",
+              "answer": "Gold or silver jewelry, a clutch, and classic heels always elevate an LBD!"
+            },
+            {
+              "question": "What’s trending in fashion right now?",
+              "answer": "Oversized blazers, monochrome outfits, and vintage-inspired accessories are trending!"
+            },
+            {
+              "question": "How can I style a basic white t-shirt?",
+              "answer": "Pair it with high-waisted jeans, a statement belt, and sneakers for a casual look!"
+            },
+            {
+              "question": "What accessories go best with a little black dress?",
+              "answer": "Gold or silver jewelry, a clutch, and classic heels always elevate an LBD!"
+            },
+            {
+              "question": "What’s trending in fashion right now?",
+              "answer": "Oversized blazers, monochrome outfits, and vintage-inspired accessories are trending!"
+            },
+            {
+              "question": "How can I style a basic white t-shirt?",
+              "answer": "Pair it with high-waisted jeans, a statement belt, and sneakers for a casual look!"
+            },
+            {
+              "question": "What accessories go best with a little black dress?",
+              "answer": "Gold or silver jewelry, a clutch, and classic heels always elevate an LBD!"
+            },
+            {
+              "question": "What’s trending in fashion right now?",
+              "answer": "Oversized blazers, monochrome outfits, and vintage-inspired accessories are trending!"
+            },
+            {
+              "question": "How can I style a basic white t-shirt?",
+              "answer": "Pair it with high-waisted jeans, a statement belt, and sneakers for a casual look!"
+            },
+            {
+              "question": "What accessories go best with a little black dress?",
+              "answer": "Gold or silver jewelry, a clutch, and classic heels always elevate an LBD!"
+            },
+            {
+              "question": "What’s trending in fashion right now?",
+              "answer": "Oversized blazers, monochrome outfits, and vintage-inspired accessories are trending!"
+            },
+            {
+              "question": "How can I style a basic white t-shirt?",
+              "answer": "Pair it with high-waisted jeans, a statement belt, and sneakers for a casual look!"
+            },
+            {
+              "question": "What accessories go best with a little black dress?",
+              "answer": "Gold or silver jewelry, a clutch, and classic heels always elevate an LBD!"
+            },
+            {
+              "question": "What’s trending in fashion right now?",
+              "answer": "Oversized blazers, monochrome outfits, and vintage-inspired accessories are trending!"
+            },
+            {
+              "question": "How can I style a basic white t-shirt?",
+              "answer": "Pair it with high-waisted jeans, a statement belt, and sneakers for a casual look!"
+            },
+            {
+              "question": "What accessories go best with a little black dress?",
+              "answer": "Gold or silver jewelry, a clutch, and classic heels always elevate an LBD!"
+            },
+            {
+              "question": "What’s trending in fashion right now?",
+              "answer": "Oversized blazers, monochrome outfits, and vintage-inspired accessories are trending!"
+            },
+            {
+              "question": "How can I style a basic white t-shirt?",
+              "answer": "Pair it with high-waisted jeans, a statement belt, and sneakers for a casual look!"
+            },
+            {
+              "question": "What accessories go best with a little black dress?",
+              "answer": "Gold or silver jewelry, a clutch, and classic heels always elevate an LBD!"
+            },
+            {
+              "question": "What’s trending in fashion right now?",
+              "answer": "Oversized blazers, monochrome outfits, and vintage-inspired accessories are trending!"
+            },
+            {
+              "question": "How can I style a basic white t-shirt?",
+              "answer": "Pair it with high-waisted jeans, a statement belt, and sneakers for a casual look!"
+            },
+            {
+              "question": "What accessories go best with a little black dress?",
+              "answer": "Gold or silver jewelry, a clutch, and classic heels always elevate an LBD!"
+            },
+            {
+              "question": "What’s trending in fashion right now?",
+              "answer": "Oversized blazers, monochrome outfits, and vintage-inspired accessories are trending!"
+            },
+            {
+              "question": "How can I style a basic white t-shirt?",
+              "answer": "Pair it with high-waisted jeans, a statement belt, and sneakers for a casual look!"
+            },
+            {
+              "question": "What accessories go best with a little black dress?",
+              "answer": "Gold or silver jewelry, a clutch, and classic heels always elevate an LBD!"
+            },
+            {
+              "question": "What’s trending in fashion right now?",
+              "answer": "Oversized blazers, monochrome outfits, and vintage-inspired accessories are trending!"
+            },
+            {
+              "question": "How can I style a basic white t-shirt?",
+              "answer": "Pair it with high-waisted jeans, a statement belt, and sneakers for a casual look!"
+            },
+            {
+              "question": "What accessories go best with a little black dress?",
+              "answer": "Gold or silver jewelry, a clutch, and classic heels always elevate an LBD!"
+            },
+            {
+              "question": "What’s trending in fashion right now?",
+              "answer": "Oversized blazers, monochrome outfits, and vintage-inspired accessories are trending!"
+            },
+            {
+              "question": "How can I style a basic white t-shirt?",
+              "answer": "Pair it with high-waisted jeans, a statement belt, and sneakers for a casual look!"
+            },
+            {
+              "question": "What accessories go best with a little black dress?",
+              "answer": "Gold or silver jewelry, a clutch, and classic heels always elevate an LBD!"
+            },
+            {
+              "question": "What’s trending in fashion right now?",
+              "answer": "Oversized blazers, monochrome outfits, and vintage-inspired accessories are trending!"
+            },
+            {
+              "question": "How can I style a basic white t-shirt?",
+              "answer": "Pair it with high-waisted jeans, a statement belt, and sneakers for a casual look!"
+            },
+            {
+              "question": "What accessories go best with a little black dress?",
+              "answer": "Gold or silver jewelry, a clutch, and classic heels always elevate an LBD!"
+            },
+            {
+              "question": "What’s trending in fashion right now?",
+              "answer": "Oversized blazers, monochrome outfits, and vintage-inspired accessories are trending!"
+            },
+            {
+              "question": "How can I style a basic white t-shirt?",
+              "answer": "Pair it with high-waisted jeans, a statement belt, and sneakers for a casual look!"
+            },
+            {
+              "question": "What accessories go best with a little black dress?",
+              "answer": "Gold or silver jewelry, a clutch, and classic heels always elevate an LBD!"
+            },
+            {
+              "question": "What’s trending in fashion right now?",
+              "answer": "Oversized blazers, monochrome outfits, and vintage-inspired accessories are trending!"
+            },
+            {
+              "question": "How can I style a basic white t-shirt?",
+              "answer": "Pair it with high-waisted jeans, a statement belt, and sneakers for a casual look!"
+            },
+            {
+              "question": "What accessories go best with a little black dress?",
+              "answer": "Gold or silver jewelry, a clutch, and classic heels always elevate an LBD!"
+            },
+            {
+              "question": "What’s trending in fashion right now?",
+              "answer": "Oversized blazers, monochrome outfits, and vintage-inspired accessories are trending!"
+            },
+            {
+              "question": "How can I style a basic white t-shirt?",
+              "answer": "Pair it with high-waisted jeans, a statement belt, and sneakers for a casual look!"
+            },
+            {
+              "question": "What accessories go best with a little black dress?",
+              "answer": "Gold or silver jewelry, a clutch, and classic heels always elevate an LBD!"
+            },
+            {
+              "question": "What’s trending in fashion right now?",
+              "answer": "Oversized blazers, monochrome outfits, and vintage-inspired accessories are trending!"
+            },
+            {
+              "question": "How can I style a basic white t-shirt?",
+              "answer": "Pair it with high-waisted jeans, a statement belt, and sneakers for a casual look!"
+            },
+            {
+              "question": "What accessories go best with a little black dress?",
+              "answer": "Gold or silver jewelry, a clutch, and classic heels always elevate an LBD!"
+            },
+            {
+              "question": "What’s trending in fashion right now?",
+              "answer": "Oversized blazers, monochrome outfits, and vintage-inspired accessories are trending!"
+            },
+            {
+              "question": "How can I style a basic white t-shirt?",
+              "answer": "Pair it with high-waisted jeans, a statement belt, and sneakers for a casual look!"
+            },
+            {
+              "question": "What accessories go best with a little black dress?",
+              "answer": "Gold or silver jewelry, a clutch, and classic heels always elevate an LBD!"
+            },
+            {
+              "question": "What’s trending in fashion right now?",
+              "answer": "Oversized blazers, monochrome outfits, and vintage-inspired accessories are trending!"
+            },
+            {
+              "question": "How can I style a basic white t-shirt?",
+              "answer": "Pair it with high-waisted jeans, a statement belt, and sneakers for a casual look!"
+            },
+            {
+              "question": "What accessories go best with a little black dress?",
+              "answer": "Gold or silver jewelry, a clutch, and classic heels always elevate an LBD!"
+            },
+            {
+              "question": "What’s trending in fashion right now?",
+              "answer": "Oversized blazers, monochrome outfits, and vintage-inspired accessories are trending!"
+            },
+            {
+              "question": "How can I style a basic white t-shirt?",
+              "answer": "Pair it with high-waisted jeans, a statement belt, and sneakers for a casual look!"
+            },
+            {
+              "question": "What accessories go best with a little black dress?",
+              "answer": "Gold or silver jewelry, a clutch, and classic heels always elevate an LBD!"
+            },
+            {
+              "question": "What’s trending in fashion right now?",
+              "answer": "Oversized blazers, monochrome outfits, and vintage-inspired accessories are trending!"
+            },
+            {
+              "question": "How can I style a basic white t-shirt?",
+              "answer": "Pair it with high-waisted jeans, a statement belt, and sneakers for a casual look!"
+            },
+            {
+              "question": "What accessories go best with a little black dress?",
+              "answer": "Gold or silver jewelry, a clutch, and classic heels always elevate an LBD!"
+            },
+            {
+              "question": "What’s trending in fashion right now?",
+              "answer": "Oversized blazers, monochrome outfits, and vintage-inspired accessories are trending!"
+            },
+            {
+              "question": "How can I style a basic white t-shirt?",
+              "answer": "Pair it with high-waisted jeans, a statement belt, and sneakers for a casual look!"
+            },
+            {
+              "question": "What accessories go best with a little black dress?",
+              "answer": "Gold or silver jewelry, a clutch, and classic heels always elevate an LBD!"
+            },
+            {
+              "question": "What’s trending in fashion right now?",
+              "answer": "Oversized blazers, monochrome outfits, and vintage-inspired accessories are trending!"
+            },
+            {
+              "question": "How can I style a basic white t-shirt?",
+              "answer": "Pair it with high-waisted jeans, a statement belt, and sneakers for a casual look!"
+            },
+            {
+              "question": "What accessories go best with a little black dress?",
+              "answer": "Gold or silver jewelry, a clutch, and classic heels always elevate an LBD!"
+            },
+            {
+              "question": "What’s trending in fashion right now?",
+              "answer": "Oversized blazers, monochrome outfits, and vintage-inspired accessories are trending!"
+            },
+            {
+              "question": "How can I style a basic white t-shirt?",
+              "answer": "Pair it with high-waisted jeans, a statement belt, and sneakers for a casual look!"
+            },
+            {
+              "question": "What accessories go best with a little black dress?",
+              "answer": "Gold or silver jewelry, a clutch, and classic heels always elevate an LBD!"
+            },
+            {
+              "question": "What’s trending in fashion right now?",
+              "answer": "Oversized blazers, monochrome outfits, and vintage-inspired accessories are trending!"
+            },
+            {
+              "question": "How can I style a basic white t-shirt?",
+              "answer": "Pair it with high-waisted jeans, a statement belt, and sneakers for a casual look!"
+            },
+            {
+              "question": "What accessories go best with a little black dress?",
+              "answer": "Gold or silver jewelry, a clutch, and classic heels always elevate an LBD!"
+            },
+            {
+              "question": "What’s trending in fashion right now?",
+              "answer": "Oversized blazers, monochrome outfits, and vintage-inspired accessories are trending!"
+            },
+            {
+              "question": "How can I style a basic white t-shirt?",
+              "answer": "Pair it with high-waisted jeans, a statement belt, and sneakers for a casual look!"
+            },
+            {
+              "question": "What accessories go best with a little black dress?",
+              "answer": "Gold or silver jewelry, a clutch, and classic heels always elevate an LBD!"
+            },
+            {
+              "question": "What’s trending in fashion right now?",
+              "answer": "Oversized blazers, monochrome outfits, and vintage-inspired accessories are trending!"
+            },
+            {
+              "question": "How can I style a basic white t-shirt?",
+              "answer": "Pair it with high-waisted jeans, a statement belt, and sneakers for a casual look!"
+            },
+            {
+              "question": "What accessories go best with a little black dress?",
+              "answer": "Gold or silver jewelry, a clutch, and classic heels always elevate an LBD!"
+            },
+            {
+              "question": "What’s trending in fashion right now?",
+              "answer": "Oversized blazers, monochrome outfits, and vintage-inspired accessories are trending!"
+            },
+            {
+              "question": "How can I style a basic white t-shirt?",
+              "answer": "Pair it with high-waisted jeans, a statement belt, and sneakers for a casual look!"
+            },
+            {
+              "question": "What accessories go best with a little black dress?",
+              "answer": "Gold or silver jewelry, a clutch, and classic heels always elevate an LBD!"
+            },
+            {
+              "question": "What’s trending in fashion right now?",
+              "answer": "Oversized blazers, monochrome outfits, and vintage-inspired accessories are trending!"
+            },
+            {
+              "question": "How can I style a basic white t-shirt?",
+              "answer": "Pair it with high-waisted jeans, a statement belt, and sneakers for a casual look!"
+            },
+            {
+              "question": "What accessories go best with a little black dress?",
+              "answer": "Gold or silver jewelry, a clutch, and classic heels always elevate an LBD!"
+            },
+            {
+              "question": "What’s trending in fashion right now?",
+              "answer": "Oversized blazers, monochrome outfits, and vintage-inspired accessories are trending!"
+            },
+            {
+              "question": "How can I style a basic white t-shirt?",
+              "answer": "Pair it with high-waisted jeans, a statement belt, and sneakers for a casual look!"
+            },
+            {
+              "question": "What accessories go best with a little black dress?",
+              "answer": "Gold or silver jewelry, a clutch, and classic heels always elevate an LBD!"
+            },
+            {
+              "question": "What’s trending in fashion right now?",
+              "answer": "Oversized blazers, monochrome outfits, and vintage-inspired accessories are trending!"
+            },
+            {
+              "question": "How can I style a basic white t-shirt?",
+              "answer": "Pair it with high-waisted jeans, a statement belt, and sneakers for a casual look!"
+            },
+            {
+              "question": "What accessories go best with a little black dress?",
+              "answer": "Gold or silver jewelry, a clutch, and classic heels always elevate an LBD!"
+            },
+            {
+              "question": "What’s trending in fashion right now?",
+              "answer": "Oversized blazers, monochrome outfits, and vintage-inspired accessories are trending!"
+            },
+            {
+              "question": "How can I style a basic white t-shirt?",
+              "answer": "Pair it with high-waisted jeans, a statement belt, and sneakers for a casual look!"
+            },
+            {
+              "question": "What accessories go best with a little black dress?",
+              "answer": "Gold or silver jewelry, a clutch, and classic heels always elevate an LBD!"
+            },
+            {
+              "question": "What’s trending in fashion right now?",
+              "answer": "Oversized blazers, monochrome outfits, and vintage-inspired accessories are trending!"
+            },
+            {
+              "question": "How can I style a basic white t-shirt?",
+              "answer": "Pair it with high-waisted jeans, a statement belt, and sneakers for a casual look!"
+            },
+            {
+              "question": "What accessories go best with a little black dress?",
+              "answer": "Gold or silver jewelry, a clutch, and classic heels always elevate an LBD!"
+            },
+            {
+              "question": "What’s trending in fashion right now?",
+              "answer": "Oversized blazers, monochrome outfits, and vintage-inspired accessories are trending!"
+            },
+            {
+              "question": "How can I style a basic white t-shirt?",
+              "answer": "Pair it with high-waisted jeans, a statement belt, and sneakers for a casual look!"
+            },
+            {
+              "question": "What accessories go best with a little black dress?",
+              "answer": "Gold or silver jewelry, a clutch, and classic heels always elevate an LBD!"
+            },
+            {
+              "question": "What’s trending in fashion right now?",
+              "answer": "Oversized blazers, monochrome outfits, and vintage-inspired accessories are trending!"
+            },
+            {
+              "question": "How can I style a basic white t-shirt?",
+              "answer": "Pair it with high-waisted jeans, a statement belt, and sneakers for a casual look!"
+            },
+            {
+              "question": "What accessories go best with a little black dress?",
+              "answer": "Gold or silver jewelry, a clutch, and classic heels always elevate an LBD!"
+            },
+            {
+              "question": "What’s trending in fashion right now?",
+              "answer": "Oversized blazers, monochrome outfits, and vintage-inspired accessories are trending!"
+            },
+            {
+              "question": "How can I style a basic white t-shirt?",
+              "answer": "Pair it with high-waisted jeans, a statement belt, and sneakers for a casual look!"
+            },
+            {
+              "question": "What accessories go best with a little black dress?",
+              "answer": "Gold or silver jewelry, a clutch, and classic heels always elevate an LBD!"
+            },
+            {
+              "question": "What’s trending in fashion right now?",
+              "answer": "Oversized blazers, monochrome outfits, and vintage-inspired accessories are trending!"
+            },
+            {
+              "question": "How can I style a basic white t-shirt?",
+              "answer": "Pair it with high-waisted jeans, a statement belt, and sneakers for a casual look!"
+            },
+            {
+              "question": "What accessories go best with a little black dress?",
+              "answer": "Gold or silver jewelry, a clutch, and classic heels always elevate an LBD!"
+            },
+            {
+              "question": "What’s trending in fashion right now?",
+              "answer": "Oversized blazers, monochrome outfits, and vintage-inspired accessories are trending!"
+            },
+            {
+              "question": "How can I style a basic white t-shirt?",
+              "answer": "Pair it with high-waisted jeans, a statement belt, and sneakers for a casual look!"
+            },
+            {
+              "question": "What accessories go best with a little black dress?",
+              "answer": "Gold or silver jewelry, a clutch, and classic heels always elevate an LBD!"
+            },
+            {
+              "question": "What’s trending in fashion right now?",
+              "answer": "Oversized blazers, monochrome outfits, and vintage-inspired accessories are trending!"
+            },
+            {
+              "question": "How can I style a basic white t-shirt?",
+              "answer": "Pair it with high-waisted jeans, a statement belt, and sneakers for a casual look!"
+            },
+            {
+              "question": "What accessories go best with a little black dress?",
+              "answer": "Gold or silver jewelry, a clutch, and classic heels always elevate an LBD!"
+            },
+            {
+              "question": "What’s trending in fashion right now?",
+              "answer": "Oversized blazers, monochrome outfits, and vintage-inspired accessories are trending!"
+            },
+            {
+              "question": "How can I style a basic white t-shirt?",
+              "answer": "Pair it with high-waisted jeans, a statement belt, and sneakers for a casual look!"
+            },
+            {
+              "question": "What accessories go best with a little black dress?",
+              "answer": "Gold or silver jewelry, a clutch, and classic heels always elevate an LBD!"
+            },
+            {
+              "question": "What’s trending in fashion right now?",
+              "answer": "Oversized blazers, monochrome outfits, and vintage-inspired accessories are trending!"
+            },
+            {
+              "question": "How can I style a basic white t-shirt?",
+              "answer": "Pair it with high-waisted jeans, a statement belt, and sneakers for a casual look!"
+            },
+            {
+              "question": "What accessories go best with a little black dress?",
+              "answer": "Gold or silver jewelry, a clutch, and classic heels always elevate an LBD!"
+            },
+            {
+              "question": "What’s trending in fashion right now?",
+              "answer": "Oversized blazers, monochrome outfits, and vintage-inspired accessories are trending!"
+            },
+            {
+              "question": "How can I style a basic white t-shirt?",
+              "answer": "Pair it with high-waisted jeans, a statement belt, and sneakers for a casual look!"
+            },
+            {
+              "question": "What accessories go best with a little black dress?",
+              "answer": "Gold or silver jewelry, a clutch, and classic heels always elevate an LBD!"
+            },
+            {
+              "question": "What’s trending in fashion right now?",
+              "answer": "Oversized blazers, monochrome outfits, and vintage-inspired accessories are trending!"
+            },
+            {
+              "question": "How can I style a basic white t-shirt?",
+              "answer": "Pair it with high-waisted jeans, a statement belt, and sneakers for a casual look!"
+            },
+            {
+              "question": "What accessories go best with a little black dress?",
+              "answer": "Gold or silver jewelry, a clutch, and classic heels always elevate an LBD!"
+            },
+            {
+              "question": "What’s trending in fashion right now?",
+              "answer": "Oversized blazers, monochrome outfits, and vintage-inspired accessories are trending!"
+            },
+            {
+              "question": "How can I style a basic white t-shirt?",
+              "answer": "Pair it with high-waisted jeans, a statement belt, and sneakers for a casual look!"
+            },
+            {
+              "question": "What accessories go best with a little black dress?",
+              "answer": "Gold or silver jewelry, a clutch, and classic heels always elevate an LBD!"
+            },
+            {
+              "question": "What’s trending in fashion right now?",
+              "answer": "Oversized blazers, monochrome outfits, and vintage-inspired accessories are trending!"
+            },
+            {
+              "question": "How can I style a basic white t-shirt?",
+              "answer": "Pair it with high-waisted jeans, a statement belt, and sneakers for a casual look!"
+            },
+            {
+              "question": "What accessories go best with a little black dress?",
+              "answer": "Gold or silver jewelry, a clutch, and classic heels always elevate an LBD!"
+            },
+            {
+              "question": "What’s trending in fashion right now?",
+              "answer": "Oversized blazers, monochrome outfits, and vintage-inspired accessories are trending!"
+            },
+            {
+              "question": "How can I style a basic white t-shirt?",
+              "answer": "Pair it with high-waisted jeans, a statement belt, and sneakers for a casual look!"
+            },
+            {
+              "question": "What accessories go best with a little black dress?",
+              "answer": "Gold or silver jewelry, a clutch, and classic heels always elevate an LBD!"
+            },
+            {
+              "question": "What’s trending in fashion right now?",
+              "answer": "Oversized blazers, monochrome outfits, and vintage-inspired accessories are trending!"
+            },
+            {
+              "question": "How can I style a basic white t-shirt?",
+              "answer": "Pair it with high-waisted jeans, a statement belt, and sneakers for a casual look!"
+            },
+            {
+              "question": "What accessories go best with a little black dress?",
+              "answer": "Gold or silver jewelry, a clutch, and classic heels always elevate an LBD!"
+            },
+            {
+              "question": "What’s trending in fashion right now?",
+              "answer": "Oversized blazers, monochrome outfits, and vintage-inspired accessories are trending!"
+            },
+            {
+              "question": "How can I style a basic white t-shirt?",
+              "answer": "Pair it with high-waisted jeans, a statement belt, and sneakers for a casual look!"
+            },
+            {
+              "question": "What accessories go best with a little black dress?",
+              "answer": "Gold or silver jewelry, a clutch, and classic heels always elevate an LBD!"
+            },
+            {
+              "question": "What’s trending in fashion right now?",
+              "answer": "Oversized blazers, monochrome outfits, and vintage-inspired accessories are trending!"
+            },
+            {
+              "question": "How can I style a basic white t-shirt?",
+              "answer": "Pair it with high-waisted jeans, a statement belt, and sneakers for a casual look!"
+            },
+            {
+              "question": "What accessories go best with a little black dress?",
+              "answer": "Gold or silver jewelry, a clutch, and classic heels always elevate an LBD!"
+            },
+            {
+              "question": "What colors go well with navy blue?",
+              "answer": "Navy blue pairs well with white, beige, gold, and even mustard yellow!"
+            },
+            {
+              "question": "Can I wear black and brown together?",
+              "answer": "Yes! Just make sure the shades complement each other, like dark brown and jet black."
+            },
+            {
+              "question": "What’s the best color for a summer outfit?",
+              "answer": "Pastels like baby blue, peach, and mint green are great for summer looks!"
+            },
+            {
+              "question": "What colors go well with navy blue?",
+              "answer": "Navy blue pairs well with white, beige, gold, and even mustard yellow!"
+            },
+            {
+              "question": "Can I wear black and brown together?",
+              "answer": "Yes! Just make sure the shades complement each other, like dark brown and jet black."
+            },
+            {
+              "question": "What’s the best color for a summer outfit?",
+              "answer": "Pastels like baby blue, peach, and mint green are great for summer looks!"
+            },
+            {
+              "question": "What colors go well with navy blue?",
+              "answer": "Navy blue pairs well with white, beige, gold, and even mustard yellow!"
+            },
+            {
+              "question": "Can I wear black and brown together?",
+              "answer": "Yes! Just make sure the shades complement each other, like dark brown and jet black."
+            },
+            {
+              "question": "What’s the best color for a summer outfit?",
+              "answer": "Pastels like baby blue, peach, and mint green are great for summer looks!"
+            },
+            {
+              "question": "What colors go well with navy blue?",
+              "answer": "Navy blue pairs well with white, beige, gold, and even mustard yellow!"
+            },
+            {
+              "question": "Can I wear black and brown together?",
+              "answer": "Yes! Just make sure the shades complement each other, like dark brown and jet black."
+            },
+            {
+              "question": "What’s the best color for a summer outfit?",
+              "answer": "Pastels like baby blue, peach, and mint green are great for summer looks!"
+            },
+            {
+              "question": "What colors go well with navy blue?",
+              "answer": "Navy blue pairs well with white, beige, gold, and even mustard yellow!"
+            },
+            {
+              "question": "Can I wear black and brown together?",
+              "answer": "Yes! Just make sure the shades complement each other, like dark brown and jet black."
+            },
+            {
+              "question": "What’s the best color for a summer outfit?",
+              "answer": "Pastels like baby blue, peach, and mint green are great for summer looks!"
+            },
+            {
+              "question": "What colors go well with navy blue?",
+              "answer": "Navy blue pairs well with white, beige, gold, and even mustard yellow!"
+            },
+            {
+              "question": "Can I wear black and brown together?",
+              "answer": "Yes! Just make sure the shades complement each other, like dark brown and jet black."
+            },
+            {
+              "question": "What’s the best color for a summer outfit?",
+              "answer": "Pastels like baby blue, peach, and mint green are great for summer looks!"
+            },
+            {
+              "question": "What colors go well with navy blue?",
+              "answer": "Navy blue pairs well with white, beige, gold, and even mustard yellow!"
+            },
+            {
+              "question": "Can I wear black and brown together?",
+              "answer": "Yes! Just make sure the shades complement each other, like dark brown and jet black."
+            },
+            {
+              "question": "What’s the best color for a summer outfit?",
+              "answer": "Pastels like baby blue, peach, and mint green are great for summer looks!"
+            },
+            {
+              "question": "What colors go well with navy blue?",
+              "answer": "Navy blue pairs well with white, beige, gold, and even mustard yellow!"
+            },
+            {
+              "question": "Can I wear black and brown together?",
+              "answer": "Yes! Just make sure the shades complement each other, like dark brown and jet black."
+            },
+            {
+              "question": "What’s the best color for a summer outfit?",
+              "answer": "Pastels like baby blue, peach, and mint green are great for summer looks!"
+            },
+            {
+              "question": "What colors go well with navy blue?",
+              "answer": "Navy blue pairs well with white, beige, gold, and even mustard yellow!"
+            },
+            {
+              "question": "Can I wear black and brown together?",
+              "answer": "Yes! Just make sure the shades complement each other, like dark brown and jet black."
+            },
+            {
+              "question": "What’s the best color for a summer outfit?",
+              "answer": "Pastels like baby blue, peach, and mint green are great for summer looks!"
+            }]
+}

@@ -1,34 +1,100 @@
 {% extends 'Co-ordinator/homeindex.html' %}
 {% block body %}
-
-<body>
-<form id="form1" name="form1" method="post" action="/searchrating#about">
-  <table width="393" height="183" border="1" class="table table-success table-striped">
-    <tr>
-      <th colspan="4">Date
-        <label>
-          <input type="date" name="textfield" value="{{ dt }}" required class="bg-transparent"/>
-          </label>
-          <label>
-          <input type="submit" name="Submit" value="Search" class="btn btn-outline-success"/>
-        </label></th>
-    </tr>
-    <tr>
-      <th>User</th>
-      <th>Reviews</th>
-      <th>Rating</th>
-      <th>Date</th>
-    </tr>
-      {% for i in val %}
-    <tr>
-      <td>{{i.USER.Name  }}</td>
-      <td>{{ i.Reviews }}</td>
-      <td>{{i.rating  }}</td>
-      <td>{{ i.Date }}</td>
-    </tr>
-      {% endfor %}
-  </table>
-</form>
-</body>
+<div class="container-fluid py-5">
+  <div class="row mb-4">
+    <div class="col-md-10 mx-auto">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h4 class="card-title mb-3">Search Ratings</h4>
+          <form id="form1" name="form1" method="post" action="/searchrating#about" class="d-flex align-items-center">
+            <div class="input-group">
+              <span class="input-group-text bg-light">
+                <i class="fa fa-calendar"></i>
+              </span>
+              <input type="date" name="textfield" value="{{ dt }}" required class="form-control" />
+              <button type="submit" name="Submit" class="btn btn-success px-5 py-2">
+                <i class="fa fa-search me-1"></i> Search
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-10 mx-auto">
+      {% if val %}
+        {% for i in val %}
+        <div class="card mb-3 shadow-sm">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <h5 class="mb-0">{{ i.USER.Name }}</h5>
+              <span class="badge bg-light text-dark">{{ i.Date }}</span>
+            </div>
+            
+            <div class="rating-container mb-3">
+              <div class="rating">
+                {% for _ in ""|rjust:i.rating %}
+                  <i class="fa fa-star text-warning"></i>
+                {% endfor %}
+              </div>
+            </div>
+            
+            <div class="review-text">
+              <p class="card-text">{{ i.Reviews }}</p>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      {% else %}
+        <div class="card text-center py-5">
+          <div class="card-body">
+            <i class="fa fa-search fa-3x text-muted mb-3"></i>
+            <h5>No ratings found</h5>
+            <p class="text-muted">Try selecting a different date</p>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+<!-- Add Font Awesome and additional styles -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<style>
+  .rating-container {
+    width: 100%;
+  }
+  .rating {
+    font-size: 2rem;
+    display: block;
+    width: 100%;
+    letter-spacing: 0.5rem;
+  }
+  .card {
+    border-radius: 10px;
+    border: none;
+    transition: transform 0.2s;
+  }
+  .card:hover {
+    transform: translateY(-5px);
+  }
+  .badge {
+    padding: 0.5rem 0.8rem;
+    border-radius: 20px;
+  }
+  .input-group {
+    width: 100%;
+  }
+  .btn-success {
+    font-size: 1.1rem;
+  }
+  .form-control {
+    padding: 0.75rem 1rem;
+    font-size: 1.1rem;
+  }
+  .input-group-text {
+    padding: 0.75rem 1rem;
+    font-size: 1.1rem;
+  }
+</style>
 {% endblock %}
-

@@ -1,39 +1,47 @@
 {% extends 'User/homeindex.html' %}
 {% block body %}
 <body>
-<form id="form1" name="form1" method="post" action="/search_wardrobe#about">
-  <table border="1" class="table table-success table-striped">
-    <tr>
-      <th colspan="7"><label>Name :
-        <input type="text" name="textfield" required value="{{ a }}" class="bg-transparent"/>
-      </label>
-      <label>
-        <input type="submit" name="Submit" value="Search" class="btn btn-outline-success"/>
-        <a href="/wardrobe_add#about" class="btn btn-outline-primary">ADD NEW</a>
+    <form id="form1" name="form1" method="post" action="/search_wardrobe#about">
+        <table border="1" class="table table-success table-striped">
+            <tr>
+                <td colspan="7">
+                    <a href="/wardrobe_view">view</a>
+                </td>
 
-      </label></th>
-    </tr>
-    <tr>
-      <th >Dress</th>
-      <th >model_name</th>
-      <th>Dress type</th>
-      <th></th>
-    </tr>
-      {% for i in wardrobes %}
-    <tr>
-      <td ><img src={{ i.Dress.url }} width='120' height='80'></td>
-      <td >{{ i.model_name }}</td>
-      <td>{{ i.dress_type }}<br>
-      <td>
-        <a href="/edit_wardrobe/{{ i.id }}#about">Edit</a></label><br>
-      <a href="/delete_wardrobe/{{ i.id }}">Delete</a>
-      </td>
-    </tr>
-      {% endfor %}
-    <tr>
-    </tr>
-  </table>
-</form>
+            </tr>
+            <tr>
+                <th colspan="7">
+                    <label>Name:
+                        <input type="text" name="textfield" required value="{{ a }}" class="bg-transparent"/>
+                    </label>
+                    <label>
+                        <input type="submit" name="Submit" value="Search" class="btn btn-outline-success"/>
+                        <a href="/wardrobe_add#about" class="btn btn-outline-primary">ADD NEW</a>
+                    </label>
+                </th>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <th>Dress</th>
+                <th>Model Name</th>
+                <th>Dress Type</th>
+                <th>Gender Type</th>
+                <th>Action</th>
+            </tr>
+            {% for i in wardrobes %}
+            <tr>
+                <td>{{ i.Name }}</td>
+                <td><img src="{{ i.Dress.url }}" width="120" height="80"></td>
+                <td>{{ i.model_name }}</td>
+                <td>{{ i.dress_type }}</td>
+                <td>{{ i.gendertype }}</td>
+                <td>
+                    <a href="/edit_wardrobe/{{ i.id }}#about">Edit</a><br>
+                    <a href="/delete_wardrobe/{{ i.id }}">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </form>
 </body>
 {% endblock %}
-

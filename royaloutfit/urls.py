@@ -5,7 +5,7 @@ from royaloutfit import views
 urlpatterns=[
 
     path('',views.login1,name='login1'),
-    path('/logout',views.logout,name='logout'),
+    path('logout/',views.logout,name='logout'),
 
     path('verify_designer',views.verify_designer,name='verify_designer'),
     path('accept_designer/<int:id>', views.accept_designer, name='accept_designer'),
@@ -20,6 +20,8 @@ urlpatterns=[
     path('block1',views.block1,name='block1'),
 
     path('Coordinator',views.Coordinator,name='Coordinator'),
+    path('manage_design',views.manage_design,name='manage_design'),
+    path('add_design',views.add_design,name='add_design'),
     path('manufacture',views.manufacture,name='manufacuture'),
     path('designer_register',views.designer_register,name='designer_register'),
     path('registration',views.registration,name='registration'),
@@ -38,7 +40,7 @@ urlpatterns=[
     path('customisedesign',views.customisedesign,name='customisedesign'),
     path('designhome',views.designhome,name='designhome'),
     path('managedesign',views.managedesign,name='managedesign'),
-    path('more_designs/<int:id>', views.more_designs,name='more_designs'),
+    path('more_designs/<int:d_id>', views.more_designs,name='more_designs'),
     path('add_more_designs',views.add_more_designs,name='add_more_designs'),
     path('add_more_design_post',views.add_more_design_post,name='add_more_design_post'),
     path('adddesigners',views.adddesigners,name='adddesigners'),
@@ -53,10 +55,10 @@ urlpatterns=[
     path('blockdesigners/<int:id>', views.blockdesigners, name='blockdesigners'),
     path('unblockdesigners/<int:id>', views.unblockdesigners, name='unblockdesigners'),
     path('searchdesigners', views.searchdesigners, name='searchdesigners'),
-
     path('addts',views.addts,name='addts'),
     path('Block_unblockdesigners',views.Block_unblockdesigners,name='Block_unblockdesigners'),
     path('delete_design/<int:id>', views.delete_design, name='delete_design'),
+    path('delete_design1/<int:id>', views.delete_design1, name='delete_design1'),
 
 
     path('manufacturehome',views.manufacturehome,name='manufacturehome'),
@@ -70,14 +72,31 @@ urlpatterns=[
     # ///////////////////////////////// USER ////////////////////////////////////////////////
 
     path('user_register', views.user_register, name='user_register'),
+    path('view_designs', views.view_designs, name='view_designs'),
     path('user_register_post', views.user_register_post, name='user_register_post'),
     path('user_home', views.user_home, name='user_home'),
-
+    path('Aichatbot', views.Aichatbot.as_view(), name="Aichatbot"), 
     path('wardrobe/', views.wardrobe_list, name='wardrobe_list'),
     path('wardrobe_add', views.add_wardrobe, name='add_wardrobe'),
     path('edit_wardrobe/<int:w_id>', views.edit_wardrobe, name='edit_wardrobe'),
     path('delete_wardrobe/<int:w_id>', views.delete_wardrobe, name='delete_wardrobe'),
     path('search_wardrobe', views.search_wardrobe, name='search_wardrobe'),
     path('dress_recommendation', views.dress_recommendation, name='dress_recommendation'),
-
+    path('dress_category', views.dress_category, name='dress_category'),
+    path('dress_category1', views.dress_category1, name='dress_category1'),
+    path('view_wardobe_products/<c_id>', views.view_wardobe_products, name='view_wardobe_products'),
+    path('trend_analysis', views.trend_analysis, name='trend_analysis'),
+    path('trend_analysis_api', views.trend_analysis_api, name='trend_analysis_api'),
+    path('wardrobe_view', views.wardrobe_view, name='wardrobe_view'),
+    path('upload_image', views.upload_image, name='upload_image'),
+    path('DressProcessor/<int:d_id>', views.DressProcessor.as_view(), name='DressProcessor'),
+    path('DressProcessor1', views.DressProcessor1.as_view(), name='DressProcessor1'),
+    path('DressProcessorMen', views.DressProcessorMen.as_view(), name='DressProcessorMen'),
+    path('DressProcessorMen1', views.DressProcessorMen1.as_view(), name='DressProcessorMen1'),
+    path('design_view', views.design_view, name='design_view'),
+    path('choose_design/<int:d_id>', views.choose_design, name='choose_design'),
+    path('add_complaint/', views.add_complaint, name='add_complaint'),
+    path('view_complaints/', views.view_complaints, name='view_complaints'),
+    path('rating_view/', views.rating_view, name='rating_view'),
+    path('view_platform_products/<c_id>', views.view_platform_products, name='view_platform_products'),
 ]

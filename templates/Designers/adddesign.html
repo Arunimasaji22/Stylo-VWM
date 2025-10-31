@@ -1,46 +1,197 @@
 {% extends 'Designers/designer_index.html' %}
 {% block body %}
 
-<form action="add_design_post" method="post" enctype="multipart/form-data" name="form1" id="form1">
-  <table width="326" height="174" border="1" class="table table-success table-striped">
-    <tr>
-      <td>Type</td>
-      <td><label>
-        <input type="text" name="textfield" required/>
-      </label></td>
-    </tr>
-    <tr>
-      <td>Design</td>
-      <td><label>
-        <input type="file" name="file" required/>
-      </label></td>
-    </tr>
-    <tr>
-      <td>Season</td>
-      <td>
-        <select name="season" required>
-          <option value="Spring">Spring Season (Vasant) - February to March</option>
-          <option value="Summer">Summer Season (Grishma) - March to May</option>
-          <option value="Monsoon">Monsoon Season (Varsha) - June to September</option>
-          <option value="Autumn">Autumn Season (Sharad) - October to November</option>
-          <option value="Pre-Winter">Pre-Winter Season (Hemant) - December to January</option>
-          <option value="Winter">Winter Season (Shishir) - January to February</option>
-        </select>
-      </td>
-    </tr>
-    <tr>
-      <td>Discription</td>
-      <td><label>
-        <input type="text" name="textfield2" required />
-      </label></td>
-    </tr>
-    <tr>
-      <td colspan="2" align="center"><label>
-        <div>
-          <input type="submit" name="Submit" value="ADD" class="btn btn-success"/>
+<div class="container mt-4">
+  <div class="card shadow-lg p-4 animate__animated animate__fadeIn">
+    <h3 class="text-center text-primary mb-4 animate__animated animate__fadeInDown">Add New Design</h3>
+    <form action="add_design_post" method="post" enctype="multipart/form-data" name="form1" id="form1" class="needs-validation" novalidate>
+      <div class="row">
+        <div class="col-md-6 mb-3 animate__animated animate__fadeInLeft">
+          <label class="form-label">Dress Name</label>
+          <input type="text" name="dress_name" class="form-control" required />
+          <div class="invalid-feedback">
+            Please enter a dress name.
           </div>
-      </label></td>
-    </tr>
-  </table>
-</form>
+        </div>
+        
+        <div class="col-md-6 mb-3 animate__animated animate__fadeInRight">
+          <label class="form-label">Dress Type</label>
+          <select name="textfield" class="form-select" required>
+            <option value="">-- Select Dress Type --</option>
+            <option value="Casual Wear">Casual Wear</option>
+            <option value="Formal Wear">Formal Wear</option>
+            <option value="Party Wear">Party Wear</option>
+            <option value="Ethnic Wear">Ethnic Wear</option>
+            <option value="Sports Wear">Sports Wear</option>
+            <option value="Winter Wear">Winter Wear</option>
+            <option value="Summer Wear">Summer Wear</option>
+          </select>
+          <div class="invalid-feedback">
+            Please select a dress type.
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 mb-3 animate__animated animate__fadeInLeft">
+          <label class="form-label">Type</label>
+          <div class="d-flex gap-3">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="Gen" value="Male" required>
+              <label class="form-check-label">Male</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="Gen" value="Female" required>
+              <label class="form-check-label">Female</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="Gen" value="Kids" required>
+              <label class="form-check-label">Kids</label>
+            </div>
+          </div>
+          <div class="invalid-feedback">
+            Please select a type.
+          </div>
+        </div>
+
+        <div class="col-md-6 mb-3 animate__animated animate__fadeInRight">
+          <label class="form-label">Season</label>
+          <select name="season" class="form-select" required>
+            <option value="">-- Select Season --</option>
+            <option value="Spring">Spring Season (Vasant) - February to March</option>
+            <option value="Summer">Summer Season (Grishma) - March to May</option>
+            <option value="Monsoon">Monsoon Season (Varsha) - June to September</option>
+            <option value="Autumn">Autumn Season (Sharad) - October to November</option>
+            <option value="Pre-Winter">Pre-Winter Season (Hemant) - December to January</option>
+            <option value="Winter">Winter Season (Shishir) - January to February</option>
+          </select>
+          <div class="invalid-feedback">
+            Please select a season.
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 mb-3 animate__animated animate__fadeInUp">
+          <label class="form-label">Design</label>
+          <input type="file" name="file" class="form-control" accept="image/*" required/>
+          <div class="invalid-feedback">
+            Please upload a design image.
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 mb-3 animate__animated animate__fadeInUp">
+          <label class="form-label">Description</label>
+          <textarea name="textfield2" class="form-control" rows="4" required></textarea>
+          <div class="invalid-feedback">
+            Please enter a description.
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center animate__animated animate__fadeInUp">
+        <button type="submit" class="btn btn-success btn-lg px-5">
+          <i class="fas fa-plus-circle me-2"></i>Add Design
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Add required CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+
+<!-- Add required JavaScript -->
+<script>
+// Form validation
+(function () {
+  'use strict'
+  var forms = document.querySelectorAll('.needs-validation')
+  Array.prototype.slice.call(forms)
+    .forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+        form.classList.add('was-validated')
+      }, false)
+    })
+})()
+
+// Add animation on scroll
+document.addEventListener('DOMContentLoaded', function() {
+  const animatedElements = document.querySelectorAll('.animate__animated');
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.visibility = 'visible';
+      }
+    });
+  });
+
+  animatedElements.forEach(element => {
+    element.style.visibility = 'hidden';
+    observer.observe(element);
+  });
+});
+
+// Add hover effect to submit button
+const submitBtn = document.querySelector('.btn-success');
+submitBtn.addEventListener('mouseover', function() {
+  this.classList.add('animate__animated', 'animate__pulse');
+});
+submitBtn.addEventListener('mouseout', function() {
+  this.classList.remove('animate__animated', 'animate__pulse');
+});
+</script>
+
+<style>
+.card {
+  border-radius: 15px;
+  border: none;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.form-control, .form-select {
+  border-radius: 8px;
+  border: 1px solid #ced4da;
+  padding: 10px;
+}
+
+.form-control:focus, .form-select:focus {
+  border-color: #80bdff;
+  box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+}
+
+.btn-success {
+  border-radius: 8px;
+  padding: 12px 30px;
+  transition: all 0.3s ease;
+}
+
+.btn-success:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(40,167,69,0.3);
+}
+
+.form-label {
+  font-weight: 500;
+  color: #495057;
+}
+
+.animate__animated {
+  animation-duration: 0.8s;
+  animation-fill-mode: both;
+}
+</style>
+
 {% endblock %}

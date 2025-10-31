@@ -1,117 +1,703 @@
-{% load static %}
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-  <title>VirtualWardrobe</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
-
+  <title>VirtualWardrobe - Admin Dashboard</title>
+  
   <!-- Favicons -->
   <link href="../static/Homepage/assets/img/favicon.png" rel="icon">
   <link href="../static/Homepage/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
+  
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
-  <link href="../static/Homepage/assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="../static/Homepage/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="../static/Homepage/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="../static/Homepage/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="../static/Homepage/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="../static/Homepage/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
-  <!-- Template Main CSS File -->
-  <link href="../static/Homepage/assets/css/style.css" rel="stylesheet">
-
-  <!-- =======================================================
-  * Template Name: iPortfolio
-  * Updated: Jan 29 2024 with Bootstrap v5.3.2
-  * Template URL: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+  
+  <!-- Boxicons -->
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  
+  <!-- Animate.css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  
+  <style>
+    :root {
+      --primary-color: #444444;
+      --secondary-color: #555555;
+      --accent-color: #666666;
+      --text-color: #444444;
+      --light-bg: #f9f9f9;
+      --gradient-start: #f7affc;
+      --gradient-middle: #f18a8a;
+      --gradient-end: #6c8af5;
+    }
+    
+    body {
+      font-family: 'Open Sans', sans-serif;
+      color: var(--text-color);
+      background-color: #ffffff;
+      margin: 0;
+      padding: 0;
+    }
+    
+    /* Sidebar */
+    .sidebar {
+      width: 280px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-middle), var(--gradient-end));
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+      padding: 30px 0;
+      transition: all 0.4s ease;
+      z-index: 999;
+    }
+    
+    .sidebar .logo-container {
+      padding: 20px 30px;
+      margin-bottom: 30px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .logo-container h1 {
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 28px;
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    
+    .logo-container h2 {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 16px;
+      font-weight: 500;
+      margin-top: 5px;
+    }
+    
+    .nav-menu {
+      padding: 0;
+      list-style: none;
+      margin: 0;
+    }
+    
+    .nav-item {
+      margin-bottom: 10px;
+      padding: 0 15px;
+    }
+    
+    /* Enhanced Nav Link with Animations */
+    .nav-link {
+      display: flex;
+      align-items: center;
+      padding: 15px 20px;
+      color: rgba(255, 255, 255, 0.8);
+      border-radius: 10px;
+      text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+      background: rgba(255, 255, 255, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .nav-link::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.2);
+      transition: all 0.3s ease;
+      z-index: 0;
+    }
+    
+    .nav-link:hover::before {
+      left: 0;
+    }
+    
+    .nav-link i {
+      font-size: 20px;
+      margin-right: 15px;
+      width: 25px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      transition: transform 0.3s ease;
+    }
+    
+    .nav-link span {
+      font-weight: 500;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .nav-link:hover, .nav-link.active {
+      background-color: rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+      transform: translateX(5px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .nav-link:hover i, .nav-link.active i {
+      transform: rotate(360deg) scale(1.2);
+    }
+    
+    /* Pulse animation for active link */
+    .nav-link.active::after {
+      content: '';
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: #fff;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      animation: pulse 1.5s infinite;
+    }
+    
+    @keyframes pulse {
+      0% {
+        transform: translateY(-50%) scale(0.8);
+        opacity: 0.8;
+      }
+      50% {
+        transform: translateY(-50%) scale(1.2);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-50%) scale(0.8);
+        opacity: 0.8;
+      }
+    }
+    
+    /* Main Content */
+    .main-content {
+      margin-left: 280px;
+      padding: 30px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: #ffffff;
+    }
+    
+    .hero-section {
+      width: 100%;
+      max-width: 800px;
+      text-align: center;
+      padding: 30px;
+    }
+    
+    .hero-section h1 {
+      font-size: 60px;
+      font-weight: 700;
+      color: #555;
+      margin-bottom: 30px;
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    .typed-container {
+      margin-bottom: 30px;
+      font-size: 18px;
+      color: var(--text-color);
+    }
+    
+    .btn-explore {
+      padding: 12px 30px;
+      background: linear-gradient(45deg, var(--gradient-start), var(--gradient-end));
+      color: #ffffff;
+      border: none;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(131, 58, 180, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .btn-explore::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: all 0.5s ease;
+    }
+    
+    .btn-explore:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(131, 58, 180, 0.4);
+    }
+    
+    .btn-explore:hover::before {
+      left: 100%;
+    }
+    
+    /* Mobile Responsiveness */
+    @media (max-width: 992px) {
+      .sidebar {
+        left: -280px;
+        transition: all 0.5s ease-in-out;
+      }
+      
+      .main-content {
+        margin-left: 0;
+        transition: all 0.5s ease-in-out;
+      }
+      
+      .sidebar.active {
+        left: 0;
+      }
+      
+      .mobile-toggle {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(45deg, var(--gradient-start), var(--gradient-end));
+        color: #ffffff;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+        cursor: pointer;
+        box-shadow: 0 5px 15px rgba(131, 58, 180, 0.3);
+        transition: all 0.3s ease;
+      }
+      
+      .mobile-toggle:hover {
+        transform: rotate(90deg);
+      }
+    }
+  </style>
 </head>
 
 <body>
+  <!-- Mobile Nav Toggle Button -->
+  <div class="mobile-toggle d-lg-none">
+    <i class="bi bi-list"></i>
+  </div>
 
-  <!-- ======= Mobile nav toggle button ======= -->
-  <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
-
-  <!-- ======= Header ======= -->
-  <header id="header">
-    <div class="d-flex flex-column">
-
-{#      <div class="profile">#}
-{#        <img src="../static/Homepage/assets/img/profile-img.jpg" alt="" class="img-fluid rounded-circle">#}
-{#        <h1 class="text-light"><a href="index.html">OutFit</a></h1>#}
-{#        <div class="social-links mt-3 text-center">#}
-{#          <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>#}
-{#          <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>#}
-{#          <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>#}
-{#          <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>#}
-{#          <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>#}
-{#        </div>#}
-{#      </div>#}
-{##}
-      <nav id="navbar" class="nav-menu navbar">
-        <ul>
-          <li><a href="#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li>
-          <li><a href="verify_designer#about" ><i class="bx bx-user"></i> <span>Verify Designer</span></a></li>
-          <li><a href="viewcompailnts#about" ><i class="bx bx-file-blank"></i> <span>Complaints</span></a></li>
-          <li><a href="viewrateing#about" ><i class="bx bx-book-content"></i> <span>Rating</span></a></li>
-          <li><a href="block#about" ><i class="bx bx-server"></i> <span>Block & Unblock Designer</span></a></li>
-          <li><a href="{% url 'logout' %}" ><i class="bx bx-envelope"></i> <span>Logout</span></a></li>
-        </ul>
-      </nav><!-- .nav-menu -->
-    </div>
-  </header><!-- End Header -->
-
-  <!-- ======= Hero Section ======= -->
-  <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
-    <div class="hero-container" data-aos="fade-in">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="logo-container">
       <h1>VirtualWardrobe</h1>
-      <p><span class="typed" data-typed-items="Every stitch tells a story,
-       Where dreams become dresses,Finding the perfect dress is an art"></span></p>
+      <h2>Admin Dashboard</h2>
     </div>
-  </section><!-- End Hero -->
 
-  <main id="main">
+    <ul class="nav-menu">
+      <li class="nav-item">
+        <a href="#" class="nav-link active">
+          <i class="bx bx-home"></i>
+          <span>Home</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="verify_designer" class="nav-link">
+          <i class="bx bx-user-check"></i>
+          <span>Verify Designer</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="manage_design" class="nav-link">
+          <i class="bx bx-closet"></i>
+          <span>Add Outfits</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="viewcompailnts" class="nav-link">
+          <i class="bx bx-message-alt-detail"></i>
+          <span>Complaints</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="viewrateing" class="nav-link">
+          <i class="bx bx-star"></i>
+          <span>Rating</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="block" class="nav-link">
+          <i class="bx bx-shield-quarter"></i>
+          <span>Block & Unblock Designer</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="{% url 'logout' %}" class="nav-link">
+          <i class="bx bx-log-out"></i>
+          <span>Logout</span>
+        </a>
+      </li>
+    </ul>
+  </aside>
 
-    <!-- ======= About Section ======= -->
-    <section id="about" class="about">
-      <div class="container">
-
-
-          {% block body %}
-          {% endblock %}
-
-
-
+  <!-- Main Content -->
+  <main class="main-content">
+    <section class="hero-section" id="hero">
+      <h1>VirtualWardrobe</h1>
+      <div class="typed-container">
+        <span class="typed" data-typed-items="Every stitch tells a story, Where dreams become dresses, Finding the perfect dress is an art"></span>
       </div>
-    </section><!-- End About Section -->
+      <button class="btn-explore">Explore Dashboard</button>
+    </section>
 
-    <!-- ======= Facts Section ======= -->
+    <section id="content-section" class="mt-5">
+      <div class="container-fluid p-0">
+        <!-- Block content will be inserted here -->
+        {% block body %}
+        <style>
+            .search-container {
+                background: #ffffff;
+                padding: 20px;
+                border-radius: 15px;
+                box-shadow: 0 5px 20px rgba(25, 135, 84, 0.1);
+                margin-bottom: 30px;
+                transition: all 0.3s ease;
+            }
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+            .search-container:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 8px 25px rgba(25, 135, 84, 0.15);
+            }
 
-  <!-- Vendor JS Files -->
-  <script src="../static/Homepage/assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="../static/Homepage/assets/vendor/aos/aos.js"></script>
-  <script src="../static/Homepage/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="../static/Homepage/assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="../static/Homepage/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="../static/Homepage/assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="../static/Homepage/assets/vendor/typed.js/typed.umd.js"></script>
-  <script src="../static/Homepage/assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="../static/Homepage/assets/vendor/php-email-form/validate.js"></script>
+            .search-input {
+                border: 2px solid #e9ecef;
+                border-radius: 10px;
+                padding: 12px 20px;
+                font-size: 1rem;
+                transition: all 0.3s ease;
+                width: 300px;
+                background: #f8f9fa;
+            }
 
-  <!-- Template Main JS File -->
-  <script src="../static/Homepage/assets/js/main.js"></script>
+            .search-input:focus {
+                border-color: #198754;
+                box-shadow: 0 0 0 3px rgba(25, 135, 84, 0.1);
+                outline: none;
+            }
 
+            .search-btn {
+                background: linear-gradient(45deg, #198754, #20c997);
+                color: white;
+                border: none;
+                padding: 12px 25px;
+                border-radius: 10px;
+                margin-left: 10px;
+                transition: all 0.3s ease;
+                font-weight: 500;
+            }
+
+            .search-btn:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 5px 15px rgba(25, 135, 84, 0.2);
+            }
+
+            .designers-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+                gap: 25px;
+                padding: 20px 0;
+            }
+
+            .designer-card {
+                background: white;
+                border-radius: 15px;
+                overflow: hidden;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+                transition: all 0.3s ease;
+                opacity: 0;
+                animation: fadeInUp 0.5s ease forwards;
+            }
+
+            .designer-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            }
+
+            .designer-photo {
+                width: 100%;
+                height: 200px;
+                object-fit: cover;
+                border-bottom: 3px solid #198754;
+            }
+
+            .designer-info {
+                padding: 20px;
+            }
+
+            .designer-name {
+                font-size: 1.2rem;
+                font-weight: 600;
+                color: #2c3e50;
+                margin-bottom: 10px;
+            }
+
+            .designer-details {
+                color: #6c757d;
+                font-size: 0.9rem;
+                margin-bottom: 15px;
+            }
+
+            .designer-contact {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                margin-bottom: 10px;
+                color: #495057;
+            }
+
+            .license-link {
+                color: #198754;
+                text-decoration: none;
+                display: inline-flex;
+                align-items: center;
+                gap: 5px;
+                transition: all 0.3s ease;
+            }
+
+            .license-link:hover {
+                color: #20c997;
+            }
+
+            .status-buttons {
+                display: flex;
+                gap: 10px;
+                margin-top: 15px;
+            }
+
+            .btn-accept, .btn-reject {
+                padding: 8px 15px;
+                border-radius: 8px;
+                border: none;
+                font-weight: 500;
+                transition: all 0.3s ease;
+                flex: 1;
+            }
+
+            .btn-accept {
+                background: linear-gradient(45deg, #198754, #20c997);
+                color: white;
+            }
+
+            .btn-reject {
+                background: linear-gradient(45deg, #dc3545, #ff6b6b);
+                color: white;
+            }
+
+            .status-badge {
+                padding: 8px 15px;
+                border-radius: 20px;
+                font-size: 0.85rem;
+                font-weight: 500;
+                text-align: center;
+            }
+
+            .status-accepted {
+                background: linear-gradient(45deg, #198754, #20c997);
+                color: white;
+            }
+
+            .status-rejected {
+                background: linear-gradient(45deg, #dc3545, #ff6b6b);
+                color: white;
+            }
+
+            .status-pending {
+                background: linear-gradient(45deg, #ffc107, #ffcd39);
+                color: #000;
+            }
+
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            @media (max-width: 768px) {
+                .designers-grid {
+                    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                }
+                
+                .search-container {
+                    flex-direction: column;
+                    gap: 15px;
+                }
+                
+                .search-input {
+                    width: 100%;
+                }
+            }
+        </style>
+
+        <div class="search-container d-flex align-items-center justify-content-center">
+            <form method="post" action="search_designer#about" class="d-flex align-items-center">
+                <input type="text" name="textfield" required value="{{ a }}" class="search-input" placeholder="Search designer...">
+                <button type="submit" class="search-btn">
+                    <i class="bi bi-search me-2"></i>Search
+                </button>
+            </form>
+        </div>
+
+        <div class="designers-grid">
+            {% for i in val %}
+            <div class="designer-card" style="animation-delay: {{ forloop.counter0 }}00ms">
+                <img src="{{ i.Photo.url }}" alt="{{ i.Name }}" class="designer-photo">
+                <div class="designer-info">
+                    <h3 class="designer-name">{{ i.Name }}</h3>
+                    
+                    <div class="designer-details">
+                        <div class="designer-contact">
+                            <i class="bi bi-gender-ambiguous"></i>
+                            <span>{{ i.Gender }}</span>
+                        </div>
+                        
+                        <div class="designer-contact">
+                            <i class="bi bi-geo-alt"></i>
+                            <span>{{ i.Place }}, {{ i.Post }}, {{ i.Pin }}</span>
+                        </div>
+                        
+                        <div class="designer-contact">
+                            <i class="bi bi-telephone"></i>
+                            <span>{{ i.Phone }}</span>
+                        </div>
+                        
+                        <div class="designer-contact">
+                            <i class="bi bi-envelope"></i>
+                            <span>{{ i.Email }}</span>
+                        </div>
+                        
+                        <div class="designer-contact">
+                            <i class="bi bi-file-earmark-text"></i>
+                            <a href="{{ i.License.url }}" download class="license-link">
+                                Download License
+                                <i class="bi bi-download"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    {% if i.LOGIN.type == 'pending' %}
+                    <div class="status-buttons">
+                        <a href="accept_designer/{{ i.LOGIN.id }}" class="btn-accept">Accept</a>
+                        <a href="reject_designer/{{ i.LOGIN.id }}" class="btn-reject">Reject</a>
+                    </div>
+                    {% elif i.LOGIN.type == 'designer' %}
+                    <div class="status-badge status-accepted">Accepted</div>
+                    {% else %}
+                    <div class="status-badge status-rejected">Rejected</div>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endblock %}
+      </div>
+    </section>
+  </main>
+
+  <!-- Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- Typed.js -->
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  
+  <script>
+    // Initialize typed.js
+    document.addEventListener('DOMContentLoaded', function() {
+      const typed = document.querySelector('.typed');
+      if (typed) {
+        let typed_strings = typed.getAttribute('data-typed-items');
+        typed_strings = typed_strings.split(',');
+        
+        new Typed('.typed', {
+          strings: typed_strings,
+          loop: true,
+          typeSpeed: 50,
+          backSpeed: 30,
+          backDelay: 2000
+        });
+      }
+      
+      // Mobile navigation toggle
+      const mobileToggle = document.querySelector('.mobile-toggle');
+      const sidebar = document.querySelector('.sidebar');
+      
+      if (mobileToggle) {
+        mobileToggle.addEventListener('click', function() {
+          sidebar.classList.toggle('active');
+        });
+      }
+      
+      // Enhanced active link state with animations
+      const navLinks = document.querySelectorAll('.nav-link');
+      
+      navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          // Remove active class from all links
+          navLinks.forEach(item => item.classList.remove('active'));
+          
+          // Add active class with animation
+          this.classList.add('active', 'animate__animated', 'animate__pulse');
+          
+          // Remove animation class after animation completes
+          setTimeout(() => {
+            this.classList.remove('animate__animated', 'animate__pulse');
+          }, 1000);
+        });
+        
+        // Add hover animation
+        link.addEventListener('mouseenter', function() {
+          if (!this.classList.contains('active')) {
+            this.classList.add('animate__animated', 'animate__fadeIn');
+            this.style.animationDuration = '0.3s';
+          }
+        });
+        
+        link.addEventListener('mouseleave', function() {
+          this.classList.remove('animate__animated', 'animate__fadeIn');
+        });
+      });
+      
+      // Add animation to the Explore button
+      const exploreBtn = document.querySelector('.btn-explore');
+      if (exploreBtn) {
+        exploreBtn.addEventListener('mouseenter', function() {
+          this.classList.add('animate__animated', 'animate__pulse');
+        });
+        
+        exploreBtn.addEventListener('mouseleave', function() {
+          this.classList.remove('animate__animated', 'animate__pulse');
+        });
+        
+        exploreBtn.addEventListener('click', function() {
+          this.classList.add('animate__animated', 'animate__bounceOut');
+          setTimeout(() => {
+            this.classList.remove('animate__animated', 'animate__bounceOut');
+            // Scroll to content section
+            document.getElementById('content-section').scrollIntoView({ behavior: 'smooth' });
+          }, 800);
+        });
+      }
+    });
+  </script>
 </body>
-
 </html>

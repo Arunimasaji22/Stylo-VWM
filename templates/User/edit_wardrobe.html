@@ -1,15 +1,22 @@
 {% extends 'User/homeindex.html' %}
 {% block body %}
 <body>
-    <form id="form1" name="form1" method="post" action="/edit_wardrobe/{{form.id}}" enctype="multipart/form-data">
+    <form id="form1" name="form1" method="post" action="/edit_wardrobe/{{ form.id }}" enctype="multipart/form-data">
+        {% csrf_token %}
         <table border="1" class="table table-success table-striped">
             <tr>
-                <th colspan="2">Add Wardrobe Item</th>
+                <th colspan="2">Edit Wardrobe Item</th>
             </tr>
             <tr>
                 <td><label for="dress">Dress Image:</label></td>
-                <td><input type="file" name="Dress" id="dress" required class="form-control"/>
-                <img src="{{form.Dress.url}}" width="120" height="80"></td>
+                <td>
+                    <input type="file" name="Dress" id="dress" class="form-control"/>
+                    <img src="{{ form.Dress.url }}" width="120" height="80">
+                </td>
+            </tr>
+            <tr>
+                <td><label for="dress_name">Dress Name:</label></td>
+                <td><input type="text" name="Name" id="dress_name" value="{{ form.Name }}" required class="form-control"/></td>
             </tr>
             <tr>
                 <td><label for="model_name">Model Name:</label></td>
@@ -19,16 +26,30 @@
                 <td><label for="dress_type">Dress Type:</label></td>
                 <td>
                     <select name="dress_type" id="dress_type" required class="form-control">
-                        <option value="Casual" {% if form.dress_type == "Casual" %}selected{% endif %}>Casual</option>
-                        <option value="Formal" {% if form.dress_type == "Formal" %}selected{% endif %}>Formal</option>
+                        <option value="Casual Wear" {% if form.dress_type == "Casual Wear" %}selected{% endif %}>Casual Wear</option>
+                        <option value="Formal Wear" {% if form.dress_type == "Formal Wear" %}selected{% endif %}>Formal Wear</option>
                         <option value="Party Wear" {% if form.dress_type == "Party Wear" %}selected{% endif %}>Party Wear</option>
-                        <option value="Traditional" {% if form.dress_type == "Traditional" %}selected{% endif %}>Traditional</option>
+                        <option value="Ethnic Wear" {% if form.dress_type == "Ethnic Wear" %}selected{% endif %}>Ethnic Wear</option>
+                        <option value="Sports Wear" {% if form.dress_type == "Sports Wear" %}selected{% endif %}>Sports Wear</option>
+                        <option value="Winter Wear" {% if form.dress_type == "Winter Wear" %}selected{% endif %}>Winter Wear</option>
+                        <option value="Summer Wear" {% if form.dress_type == "Summer Wear" %}selected{% endif %}>Summer Wear</option>
                     </select>
                 </td>
             </tr>
             <tr>
+                <td><label>Gender Type:</label></td>
+                <td>
+                    <input type="radio" name="gendertype" value="Male" id="male" {% if form.gendertype == "Male" %}checked{% endif %}/>
+                    <label for="male">Male</label>
+                    <input type="radio" name="gendertype" value="Female" id="female" {% if form.gendertype == "Female" %}checked{% endif %}/>
+                    <label for="female">Female</label>
+                    <input type="radio" name="gendertype" value="Kid" id="kid" {% if form.gendertype == "Kid" %}checked{% endif %}/>
+                    <label for="kid">Kid</label>
+                </td>
+            </tr>
+            <tr>
                 <td colspan="2">
-                    <input type="submit" name="Submit" value="Add" class="btn btn-outline-success"/>
+                    <input type="submit" name="Submit" value="Update" class="btn btn-outline-success"/>
                     <a href="/wardrobe" class="btn btn-outline-primary">Back</a>
                 </td>
             </tr>
